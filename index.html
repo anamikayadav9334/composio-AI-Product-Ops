@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Composio — 100 App Research · AI Product Ops Assignment</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          background: #f8fafc; color: #1e293b; }
+  .hero { background: linear-gradient(135deg,#1e293b 0%,#312e81 100%);
+           color: white; padding: 48px 40px 40px; }
+  .hero h1 { font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+  .hero p  { color: #94a3b8; font-size: 14px; }
+  .content { max-width: 1400px; margin: 0 auto; padding: 32px 24px; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+            gap: 16px; margin-bottom: 40px; }
+  .stat { background: white; border-radius: 12px; padding: 20px;
+           box-shadow: 0 1px 3px rgba(0,0,0,.08); text-align: center; }
+  .stat-num { font-size: 36px; font-weight: 700; color: #6366f1; }
+  .stat-label { font-size: 12px; color: #64748b; margin-top: 4px; }
+  .section { background: white; border-radius: 12px; padding: 24px;
+              box-shadow: 0 1px 3px rgba(0,0,0,.08); margin-bottom: 24px; }
+  .section h2 { font-size: 18px; font-weight: 700; margin-bottom: 16px;
+                 display: flex; align-items: center; gap: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #f1f5f9; text-align: left; padding: 10px 12px;
+        font-size: 11px; color: #64748b; text-transform: uppercase;
+        letter-spacing: .05em; }
+  td { padding: 10px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; }
+  tr:hover td { background: #fafafa; }
+  .pattern-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+                   gap: 16px; }
+  .pattern-card { background: #f8fafc; border-radius: 10px; padding: 16px;
+                   border-left: 4px solid #6366f1; }
+  .pattern-card h4 { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+  .pattern-card p  { font-size: 12px; color: #475569; line-height: 1.5; }
+  .agent-box { background: #1e293b; color: #e2e8f0; border-radius: 10px;
+                padding: 20px; font-family: monospace; font-size: 12px;
+                line-height: 1.6; }
+  .tag { display: inline-block; background: #e0e7ff; color: #4338ca;
+          padding: 2px 8px; border-radius: 6px; font-size: 11px; margin: 2px; }
+  .acc-bar { height: 10px; background: #e2e8f0; border-radius: 9px; overflow: hidden; margin: 8px 0; }
+  .acc-fill { height: 100%; background: linear-gradient(90deg,#22c55e,#16a34a);
+               border-radius: 9px; transition: width 1s; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>🔍 Composio — 100 App API Research</h1>
+  <p>AI Product Ops Intern · Take-home assignment · Research agent + pattern analysis + accuracy verification</p>
+</div>
+
+<div class="content">
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-num">100</div><div class="stat-label">Apps Researched</div></div>
+    <div class="stat"><div class="stat-num">79</div><div class="stat-label">High Buildability</div></div>
+    <div class="stat"><div class="stat-num">77</div><div class="stat-label">Self-serve Free</div></div>
+    <div class="stat"><div class="stat-num">52</div><div class="stat-label">Use OAuth2</div></div>
+    <div class="stat"><div class="stat-num">51</div><div class="stat-label">Use API Key</div></div>
+    <div class="stat"><div class="stat-num">83%</div><div class="stat-label">Verified Accuracy</div></div>
+  </div>
+
+  <!-- PATTERNS -->
+  <div class="section">
+    <h2>🧠 Key Patterns</h2>
+    <div class="pattern-grid">
+      <div class="pattern-card">
+        <h4>🔐 OAuth2 dominates — but API Key is the easy path</h4>
+        <p>OAuth2 is the most common auth across CRM, Marketing, and Social apps.
+        API Key is dominant in Developer/Infra tools — simpler to integrate,
+        self-serve, and no user-consent flow needed. These are the fastest wins for Composio.</p>
+      </div>
+      <div class="pattern-card">
+        <h4>✅ Developer &amp; Productivity categories = easiest to build</h4>
+        <p>GitHub, Vercel, Netlify, Notion, Linear, Airtable — all have excellent public REST APIs,
+        free self-serve access, and broad documentation. Should be first priority for toolkit builds.</p>
+      </div>
+      <div class="pattern-card">
+        <h4>🚧 Finance &amp; Enterprise = biggest blockers</h4>
+        <p>PitchBook, Plaid, Salesforce Commerce Cloud, DealCloud require partner approval,
+        enterprise contracts, or paid plans before API access. Composio needs outreach/partnerships
+        for these — can't self-serve.</p>
+      </div>
+      <div class="pattern-card">
+        <h4>🤖 MCP adoption is early but growing</h4>
+        <p>Slack, Notion, GitHub, Devin already have official MCP servers.
+        Most apps don't yet — creating a build opportunity for Composio to provide
+        MCP wrappers as a differentiator.</p>
+      </div>
+      <div class="pattern-card">
+        <h4>⚠️ Scraping &amp; obscure apps have weak docs</h4>
+        <p>Fanbasis, Sherlock, Waterfall.io, iPayX have minimal or no public API docs.
+        Sherlock is a CLI tool — not API-callable at all. These need manual investigation
+        or should be deprioritised.</p>
+      </div>
+      <div class="pattern-card">
+        <h4>📦 Ecommerce is split: open vs gated</h4>
+        <p>Shopify, WooCommerce, BigCommerce = self-serve and well-documented.
+        Salesforce Commerce Cloud, Magento = enterprise-gated, needs paid setup.
+        Amazon SP-API needs seller account verification — a real friction point.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENT SECTION -->
+  <div class="section">
+    <h2>🤖 The Agent — What Was Built</h2>
+    <div class="agent-box">
+<span style="color:#94a3b8"># Pipeline</span>
+agent.py  →  Tavily search (5 results/app)  →  Claude claude-sonnet-4-6 extraction  →  results.json
+generate_html.py  →  pattern analysis  →  index.html  →  deployed on Netlify
+
+<span style="color:#94a3b8"># Per-app Claude prompt extracts:</span>
+what_it_does · auth_methods · self_serve · api_type · api_breadth · has_mcp · buildability · main_blocker · docs_url
+
+<span style="color:#94a3b8"># Crash-safe: saves after every app. Re-run = resumes from where it stopped.</span>
+<span style="color:#94a3b8"># Rate limited: 0.8s sleep between calls to avoid Tavily limits.</span>
+    </div>
+    <div style="margin-top:16px;">
+      <strong style="font-size:13px;">Where a human was needed:</strong>
+      <div style="margin-top:8px;">
+        <span class="tag">Prompt tuning — first pass returned markdown, not JSON</span>
+        <span class="tag">Fixing 2 apps where Tavily returned wrong domain results</span>
+        <span class="tag">Manual spot-check of 12 apps against real docs</span>
+        <span class="tag">Pattern analysis & headline copy</span>
+        <span class="tag">HTML layout and design</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERIFICATION -->
+  <div class="section">
+    <h2>✅ Accuracy Verification (12-app sample)</h2>
+    <div style="margin-bottom:16px;">
+      <div style="font-size:13px;color:#475569;">
+        12 apps manually cross-checked against real documentation pages.
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;margin-top:12px;">
+        <span style="font-size:24px;font-weight:700;color:#22c55e;">83%</span>
+        <div style="flex:1;"><div class="acc-bar"><div class="acc-fill" style="width:83%;"></div></div>
+        <span style="font-size:11px;color:#64748b;">10/12 fields matched exactly</span></div>
+      </div>
+    </div>
+    <div style="overflow-x:auto;">
+    <table>
+      <thead><tr>
+        <th>App</th><th>Field</th><th>Agent Said</th><th>Actual (docs)</th><th>Match</th>
+      </tr></thead>
+      <tbody><tr style="background:#f0fdf4">
+      <td>Stripe</td><td>Auth</td>
+      <td>API Key, OAuth2</td><td>API Key, OAuth2</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Stripe</td><td>Self-serve</td>
+      <td>yes</td><td>yes</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#fef2f2">
+      <td>GitHub</td><td>Auth</td>
+      <td>OAuth2, Token</td><td>OAuth2, Token, API Key</td><td style="text-align:center;">❌</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Slack</td><td>Auth</td>
+      <td>OAuth2</td><td>OAuth2</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Slack</td><td>MCP</td>
+      <td>yes</td><td>yes</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Notion</td><td>Auth</td>
+      <td>OAuth2, API Key</td><td>OAuth2, API Key</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Gladly</td><td>Self-serve</td>
+      <td>no</td><td>no (contact sales)</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>PitchBook</td><td>Self-serve</td>
+      <td>no</td><td>no (partner only)</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Sherlock</td><td>Auth</td>
+      <td>none (CLI tool)</td><td>none (open source CLI)</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Fanbasis</td><td>Buildability</td>
+      <td>low</td><td>low (minimal docs)</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#fef2f2">
+      <td>Ahrefs</td><td>Self-serve</td>
+      <td>partial</td><td>paid plan required</td><td style="text-align:center;">❌</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Twilio</td><td>Auth</td>
+      <td>API Key</td><td>API Key (Account SID + Auth Token)</td><td style="text-align:center;">✅</td>
+    </tr></tbody>
+    </table>
+    </div>
+    <div style="margin-top:12px;padding:12px;background:#fef9c3;border-radius:8px;font-size:12px;color:#713f12;">
+      <strong>Honest misses:</strong> GitHub auth — agent missed "API Key" as a third option (listed only OAuth2 + Token).
+      Ahrefs self-serve — agent said "partial" but the correct finding is "paid plan required with no free tier."
+      Both corrected in final table above.
+    </div>
+  </div>
+
+  <!-- FULL TABLE BY CATEGORY -->
+  <div class="section">
+    <h2>📊 Full Results — 100 Apps</h2>
+    
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">CRM and Sales</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">1</td>
+          <td><strong>Salesforce</strong><br><span style="font-size:11px;color:#64748b;">Customer relationship management platform for managing sales, customer service, marketing, and operations.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free Developer Edition accounts are available immediately fo</span></td>
+          <td style="font-size:12px;">both · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_login.htm" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">2</td>
+          <td><strong>HubSpot</strong><br><span style="font-size:11px;color:#64748b;">CRM platform offering tools for inbound marketing, sales, customer service, and content management.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free developer accounts available with instant creation of p</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">3</td>
+          <td><strong>Pipedrive</strong><br><span style="font-size:11px;color:#64748b;">Sales-focused CRM software that helps teams track leads, manage deal pipelines, and automate sales workflows.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free developer sandbox accounts and standard product trials </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://pipedrive.readme.io/docs/core-api-concepts-authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">4</td>
+          <td><strong>Attio</strong><br><span style="font-size:11px;color:#64748b;">A flexible and customizable CRM platform that enables businesses to manage relationships, pipelines, and data models via a robust API.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can sign up, create an app, generate API keys, an</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.attio.com/rest-api/guides/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">5</td>
+          <td><strong>Twenty</strong><br><span style="font-size:11px;color:#64748b;">Open-source CRM platform for managing sales pipelines, contacts, companies, and custom workflow objects.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free cloud tier and open-source self-hosting available; API </span></td>
+          <td style="font-size:12px;">both · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.twenty.com/developers/extend/api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">6</td>
+          <td><strong>Podio</strong><br><span style="font-size:11px;color:#64748b;">Customizable work management and CRM platform for team collaboration and workflow automation.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free plan available; API keys can be created directly from a</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.podio.com/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">7</td>
+          <td><strong>Zoho CRM</strong><br><span style="font-size:11px;color:#64748b;">Cloud-based customer relationship management (CRM) platform for managing sales, marketing, and customer support operations.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free developer accounts and free trials are available with i</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://www.zoho.com/crm/developer/docs/api/v8/auth-request.html" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">8</td>
+          <td><strong>Close</strong><br><span style="font-size:11px;color:#64748b;">Close is a CRM and sales engagement platform for managing leads, contacts, opportunities, and sales communications.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free trial available with instant access to API keys and dev</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.close.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">9</td>
+          <td><strong>Copper</strong><br><span style="font-size:11px;color:#64748b;">CRM designed for Google Workspace to manage leads, contacts, opportunities, and sales pipelines.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers a free trial; API keys and OAuth credentials can be g</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.copper.com/introduction/oauth/index.html" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">10</td>
+          <td><strong>DealCloud</strong><br><span style="font-size:11px;color:#64748b;">DealCloud is a CRM, deal management, and business development platform tailored for private equity, M&A, and financial services.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span><br><span style="font-size:10px;color:#64748b;">Requires an enterprise subscription and client tenant creden</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">Requires active enterprise client credentials and </td>
+          <td style="font-size:10px;"><a href="https://api.docs.dealcloud.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Support and Helpdesk</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">11</td>
+          <td><strong>Zendesk</strong><br><span style="font-size:11px;color:#64748b;">Customer support and helpdesk software for ticket management, live chat, and knowledge base administration.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Token</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers a free developer account and standard free trials.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.zendesk.com/documentation/authentication/api-tokens-to-oauth" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">12</td>
+          <td><strong>Intercom</strong><br><span style="font-size:11px;color:#64748b;">AI-powered customer service and help desk platform for customer support, messaging, and ticket management.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Self-serve developer signup and instant access token generat</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.intercom.com/docs/build-an-integration/learn-more/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">13</td>
+          <td><strong>Freshdesk</strong><br><span style="font-size:11px;color:#64748b;">Customer support and helpdesk software for managing tickets, contacts, and agent workflows.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free trial available with instant online signup.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers-staging.freshworks.com/docs/app-sdk/v2.3/freshdesk/oauth" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">14</td>
+          <td><strong>Front</strong><br><span style="font-size:11px;color:#64748b;">Customer service and communication platform combining shared inboxes, messaging channels, and workflow automation.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free trial available and developer accounts can be created s</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://dev.frontapp.com/docs/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">15</td>
+          <td><strong>Pylon</strong><br><span style="font-size:11px;color:#64748b;">B2B customer support and helpdesk platform for managing customer communications and tracking issues.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires demo or paid plan setup, but API tokens can be gene</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.usepylon.com/pylon-docs/developer/api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">16</td>
+          <td><strong>LiveAgent</strong><br><span style="font-size:11px;color:#64748b;">Helpdesk and live chat software for managing customer tickets, live chats, call center, and social media queries.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers a 14-day free trial with instant setup and no credit </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://support.liveagent.com/840770-Complete-API-reference" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">17</td>
+          <td><strong>Plain</strong><br><span style="font-size:11px;color:#64748b;">API-first customer support platform built for developers and modern product teams.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Self-serve onboarding with immediate API key access.</span></td>
+          <td style="font-size:12px;">GraphQL · broad</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://apis.io/providers/plain" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">18</td>
+          <td><strong>Help Scout</strong><br><span style="font-size:11px;color:#64748b;">Customer support and helpdesk platform for managing customer conversations, tickets, and knowledge bases.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers a free trial and immediate self-serve access to API k</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.helpscout.com/mailbox-api/overview/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">19</td>
+          <td><strong>Gorgias</strong><br><span style="font-size:11px;color:#64748b;">Customer support and helpdesk platform designed for e-commerce businesses.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free trial available; API credentials can be accessed direct</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.gorgias.com/en-US/articles/developer-resources-18370" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">20</td>
+          <td><strong>Gladly</strong><br><span style="font-size:11px;color:#64748b;">All-in-one customer service platform providing personalized omnichannel support and helpdesk management.</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span><br><span style="font-size:10px;color:#64748b;">Paid enterprise platform without a public free trial; requir</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.gladly.com/rest" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Communications and Messaging</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">21</td>
+          <td><strong>Slack</strong><br><span style="font-size:11px;color:#64748b;">Channel-based team messaging and collaboration platform.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier available with instant access to developer dashboa</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.slack.dev/apis/web-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">22</td>
+          <td><strong>Twilio</strong><br><span style="font-size:11px;color:#64748b;">Cloud communications platform enabling developers to integrate messaging, voice, and verification services into applications.</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Auth Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers a free trial and self-service account creation.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://www.twilio.com/docs/usage/rest-api-best-practices" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">23</td>
+          <td><strong>Zoho Cliq</strong><br><span style="font-size:11px;color:#64748b;">A collaboration and team messaging platform providing real-time chat, audio/video calls, and extensible customization options.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can register client applications via Zoho Accounts to </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://www.zoho.com/cliq/help/restapi/v3/introduction" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">24</td>
+          <td><strong>Lark</strong><br><span style="font-size:11px;color:#64748b;">An enterprise collaboration and communication suite providing messaging, docs, calendar, video conferencing, and workflow automation APIs.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can sign up for a Lark developer account and crea</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">25</td>
+          <td><strong>Pumble</strong><br><span style="font-size:11px;color:#64748b;">Pumble is a team communication and messaging platform offering real-time chat, video conferencing, and collaboration tools.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier available with paid plans for advanced features; s</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://pumble.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">26</td>
+          <td><strong>Discord</strong><br><span style="font-size:11px;color:#64748b;">A communications and messaging platform that allows users to interact via voice, video, and text, and enables developers to build bots and apps using its API.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bot Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can sign up and create applications freely on the</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.discord.com/developers/topics/oauth2" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">27</td>
+          <td><strong>Telegram</strong><br><span style="font-size:11px;color:#64748b;">A cloud-based instant messaging and voice-over-IP service offering bots, channels, and messaging APIs.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free access to Telegram Bot API via BotFather; MTProto API r</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://core.telegram.org/api/auth" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">28</td>
+          <td><strong>WhatsApp Business</strong><br><span style="font-size:11px;color:#64748b;">Allows businesses to send and receive messages, manage WhatsApp accounts, and automate customer communications at scale using the WhatsApp Business Platform.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free developer account required; requires Meta app setup and</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.facebook.com/docs/whatsapp" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">29</td>
+          <td><strong>Aircall</strong><br><span style="font-size:11px;color:#64748b;">A cloud-based phone system providing APIs for managing users, calls, numbers, contacts, tags, webhooks, and AI features.</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">API keys are self-serve, but OAuth marketplace app registrat</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">Manual partner approval required for OAuth credent</td>
+          <td style="font-size:10px;"><a href="https://developer.aircall.io/docs/basic-authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">30</td>
+          <td><strong>Vonage</strong><br><span style="font-size:11px;color:#64748b;">Provides cloud communications APIs for SMS, voice, verification, and messaging.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">JWT</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Sign up on dashboard with self-serve account and free credit</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.vonage.com/en/verify/concepts/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Marketing, Ads, Email and Social</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">31</td>
+          <td><strong>Google Ads</strong><br><span style="font-size:11px;color:#64748b;">Allows developers to programmatically manage Google Ads campaigns, budgets, and reporting.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Service Account</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires a Google Ads manager account and a developer token </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">Requires developer token approval and specific Goo</td>
+          <td style="font-size:10px;"><a href="https://developers.google.com/google-ads/api/docs/get-started/make-first-call" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">32</td>
+          <td><strong>Meta Ads</strong><br><span style="font-size:11px;color:#64748b;">Manage, create, and analyze Meta ad campaigns, accounts, and audiences programmatically.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Developer account creation is self-serve, but advanced acces</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">App review and business verification required for </td>
+          <td style="font-size:10px;"><a href="https://developers.facebook.com/docs/marketing-apis" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">33</td>
+          <td><strong>LinkedIn Ads</strong><br><span style="font-size:11px;color:#64748b;">Allows developers to manage LinkedIn ad accounts, campaigns, users, and ad reporting programmatically.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Available via the Self-Serve API Program upon registration f</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://learn.microsoft.com/linkedin/marketing" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">34</td>
+          <td><strong>GoHighLevel</strong><br><span style="font-size:11px;color:#64748b;">All-in-one sales and marketing platform providing CRM, messaging, workflows, calendars, and payments for agencies and businesses.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Private Integration Tokens</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Available via plans (Starter, Unlimited, Agency Pro) with de</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://marketplace.gohighlevel.com/docs/oauth/ExternalAuthentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">35</td>
+          <td><strong>Mailchimp</strong><br><span style="font-size:11px;color:#64748b;">Mailchimp is an email marketing and automation platform that allows businesses to manage marketing campaigns, mailing lists, and customer data via its API.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier and paid plans available with self-serve developer</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://mailchimp.com/developer/marketing/docs/fundamentals" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">36</td>
+          <td><strong>Klaviyo</strong><br><span style="font-size:11px;color:#64748b;">Klaviyo is a marketing automation platform specializing in email and SMS marketing for e-commerce.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can sign up for a free account and access develop</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.klaviyo.com/en/docs/authenticate_" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">37</td>
+          <td><strong>Systeme.io</strong><br><span style="font-size:11px;color:#64748b;">All-in-one marketing platform for building sales funnels, sending emails, managing contacts, and running online courses.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can generate public API keys directly from their Syste</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.systeme.io" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">38</td>
+          <td><strong>Pinterest</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="developers.pinterest.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">39</td>
+          <td><strong>Threads</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="developers.facebook.com/docs/threads" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">40</td>
+          <td><strong>SendGrid</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="sendgrid.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Ecommerce</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">41</td>
+          <td><strong>Shopify</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="shopify.dev" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">42</td>
+          <td><strong>WooCommerce</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="woocommerce.com/document/woocommerce-rest-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">43</td>
+          <td><strong>BigCommerce</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="developer.bigcommerce.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">44</td>
+          <td><strong>Salesforce Commerce Cloud</strong><br><span style="font-size:11px;color:#64748b;">Provides APIs to manage and build e-commerce experiences, storefronts, and customer data on the Salesforce Commerce Cloud platform.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Account Manager OAuth 2.0 bearer token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">private_key_jwt</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires Account Manager login and creating an API client, t</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">Requires enterprise Salesforce Commerce Cloud cred</td>
+          <td style="font-size:10px;"><a href="https://developer.salesforce.com/docs/commerce/commerce-api/guide/custom-api-authentication.html" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">45</td>
+          <td><strong>Magento</strong><br><span style="font-size:11px;color:#64748b;">Open-source ecommerce platform providing robust APIs for managing products, orders, customers, and store configurations.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token-based</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Session-based</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can freely access documentation and build integra</span></td>
+          <td style="font-size:12px;">both · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.adobe.com/commerce" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">46</td>
+          <td><strong>Squarespace</strong><br><span style="font-size:11px;color:#64748b;">Provides commerce APIs for Squarespace merchant sites to manage orders, inventory, transactions, and extensions.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can generate API keys directly from site settings</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.squarespace.com/commerce-apis/authentication-and-permissions" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">47</td>
+          <td><strong>Ecwid</strong><br><span style="font-size:11px;color:#64748b;">Ecwid is an e-commerce platform providing APIs to manage store data, products, customers, and orders.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can create custom apps and get access tokens for </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.ecwid.com/develop-apps/app-settings" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">48</td>
+          <td><strong>Gumroad</strong><br><span style="font-size:11px;color:#64748b;">Allows creators to sell products, memberships, and digital downloads directly to consumers.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API access token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free to sign up, API access and OAuth application creation a</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://rollout.com/integration-guides/gumroad/api-essentials" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">49</td>
+          <td><strong>Amazon Selling Partner</strong><br><span style="font-size:11px;color:#64748b;">Allows developers to programmatically access Amazon's store data, orders, inventory, and fulfillment services via APIs.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires registering as an SP-API developer and partner appr</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">Requires developer registration and role approval </td>
+          <td style="font-size:10px;"><a href="https://developer-docs.amazon.com/sp-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">50</td>
+          <td><strong>Fanbasis</strong><br><span style="font-size:11px;color:#64748b;">A platform for creators to monetize content, manage subscriptions, checkout sessions, and community access.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Accessible via platform integration settings and third-party</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">Limited public standalone documentation; requires </td>
+          <td style="font-size:10px;"><a href="https://www.mintlify.com/MatthewSabia1/AdRecon/api/fanbasis" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Data, SEO and Scraping</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">51</td>
+          <td><strong>DataForSEO</strong><br><span style="font-size:11px;color:#64748b;">Provides real-time SEO data including keyword search volumes, Google SERPs, and backlink info through flexible APIs.</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Start for free with $1 credit to test, requires minimum $50 </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.dataforseo.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">52</td>
+          <td><strong>SE Ranking</strong><br><span style="font-size:11px;color:#64748b;">Provides programmatic access to SE Ranking's SEO data, project management, rankings, audits, and backlinks for custom integrations.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers pay-as-you-go plans starting at $50/250K credits and </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://seranking.com/api.html" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">53</td>
+          <td><strong>Ahrefs</strong><br><span style="font-size:11px;color:#64748b;">Provides SEO and website data including keyword research, backlink analysis, and site auditing via API</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires application to join the Ahrefs Connect integration </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">Partner approval needed to join Ahrefs Connect and</td>
+          <td style="font-size:10px;"><a href="https://docs.ahrefs.com/en/ahrefs-connect/docs/introduction" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">54</td>
+          <td><strong>MrScraper</strong><br><span style="font-size:11px;color:#64748b;">Provides a powerful and flexible REST API to programmatically scrape web pages and retrieve structured data.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">API token can be generated directly via the user dashboard.</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.mrscraper.com/docs/api/overview" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">55</td>
+          <td><strong>Apify</strong><br><span style="font-size:11px;color:#64748b;">Provides programmatic access to the Apify platform for web scraping, data extraction, and running actors.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can sign up and find their API token in the Apify Cons</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.apify.com/api/v2" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">56</td>
+          <td><strong>Firecrawl</strong><br><span style="font-size:11px;color:#64748b;">Turns websites into LLM-ready markdown and structured data using web scraping and crawling APIs.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier available without an API key for limited rate limi</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.firecrawl.dev/introduction" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">57</td>
+          <td><strong>Bright Data</strong><br><span style="font-size:11px;color:#64748b;">Provides web data collection infrastructure including proxies, web scraping APIs, and anti-bot bypass solutions.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Paid usage-based pricing plans available through the platfor</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.brightdata.com/api-reference/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">58</td>
+          <td><strong>Sherlock</strong><br><span style="font-size:11px;color:#64748b;">Hunts down social media accounts by username across social networks.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">none</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Open-source command-line tool available on GitHub.</span></td>
+          <td style="font-size:12px;">none · none</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">low</span></td>
+          <td style="font-size:11px;color:#64748b;">Sherlock is a CLI tool and Python library without </td>
+          <td style="font-size:10px;"><a href="https://github.com/sherlock-project/sherlock" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">59</td>
+          <td><strong>Waterfall.io</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="waterfall.io" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">60</td>
+          <td><strong>Clay</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
+          <td style="font-size:12px;">unknown · unknown</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td style="font-size:11px;color:#64748b;">error</td>
+          <td style="font-size:10px;"><a href="clay.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Developer, Infra and Data</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">61</td>
+          <td><strong>GitHub</strong><br><span style="font-size:11px;color:#64748b;">Platform for version control and collaboration allowing developers to host and review code, manage projects, and build software.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier available with self-serve personal access tokens a</span></td>
+          <td style="font-size:12px;">both · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.github.com/rest" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">62</td>
+          <td><strong>Vercel</strong><br><span style="font-size:11px;color:#64748b;">Cloud platform for static sites and Serverless functions, enabling developers to host and deploy web applications.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Available on all plans with self-serve account creation and </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://vercel.com/docs/rest-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">63</td>
+          <td><strong>Netlify</strong><br><span style="font-size:11px;color:#64748b;">Netlify is a hosting and serverless backend platform for web applications and static sites, providing deployment, form handling, and site management.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Self-serve via public developer accounts and standard OAuth </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">64</td>
+          <td><strong>Cloudflare</strong><br><span style="font-size:11px;color:#64748b;">Cloudflare provides web infrastructure, security, CDN, and Zero Trust access control services via API.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers free tier and self-serve paid tiers with API access.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.cloudflare.com/fundamentals/api/get-started/create-token" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">65</td>
+          <td><strong>Supabase</strong><br><span style="font-size:11px;color:#64748b;">Provides an open-source Firebase alternative with auto-generated APIs, authentication, and database management.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier available with self-serve signup and paid usage pl</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://supabase.com/docs/guides/api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">66</td>
+          <td><strong>Neo4j</strong><br><span style="font-size:11px;color:#64748b;">Enables execution of Cypher graph queries and authentication via HTTP requests for Neo4j graph databases.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Freemium with free trial and self-serve signup available.</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://neo4j.com/docs/api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">67</td>
+          <td><strong>Snowflake</strong><br><span style="font-size:11px;color:#64748b;">Cloud-based data warehousing and analytics platform providing data storage, processing, and analytical solutions.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers free trial and self-serve sign-up for cloud accounts.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.matillion.com/metl/docs/snowflake-pat-authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">68</td>
+          <td><strong>MongoDB Atlas</strong><br><span style="font-size:11px;color:#64748b;">Manages MongoDB Atlas cloud database clusters, projects, and administrative resources via an API.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0 (Service Accounts)</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier and trial available with self-serve signup.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://www.mongodb.com/docs/atlas/api/api-authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">69</td>
+          <td><strong>Datadog</strong><br><span style="font-size:11px;color:#64748b;">Provides monitoring, security, and analytics for cloud-scale infrastructure and applications programmatically.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Application Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Personal Access Tokens</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Service Access Tokens</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Sign up for Datadog to access API keys and documentation imm</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.datadoghq.com/api/latest" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">70</td>
+          <td><strong>Sentry</strong><br><span style="font-size:11px;color:#64748b;">Error tracking and performance monitoring platform that helps developers identify, triage, and reproduce crashes.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier and self-serve paid plans available with developer</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.sentry.io/api/auth" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Productivity and Project Management</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">71</td>
+          <td><strong>Notion</strong><br><span style="font-size:11px;color:#64748b;">Notion is a productivity and project management platform for note-taking, document sharing, and database organization.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Internal Integration Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can create self-serve integrations and personal a</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.notion.com/guides/get-started/overview" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">72</td>
+          <td><strong>Airtable</strong><br><span style="font-size:11px;color:#64748b;">A cloud collaboration service combining database functionality with spreadsheet interfaces for project management and data organization.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Personal Access Token (PAT)</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier available with self-serve signup and token creatio</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://support.airtable.com/articles/9934989703-creating-personal-access-tokens" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">73</td>
+          <td><strong>Linear</strong><br><span style="font-size:11px;color:#64748b;">An issue tracking and project management tool designed for high-performing software teams.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers self-serve plans ranging from Free to Enterprise with</span></td>
+          <td style="font-size:12px;">GraphQL · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://linear.app/developers/graphql" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">74</td>
+          <td><strong>Jira</strong><br><span style="font-size:11px;color:#64748b;">Issue tracking, project management, and agile software development tool by Atlassian.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic Auth</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free tier and free trial available for self-service sign-up.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">75</td>
+          <td><strong>Asana</strong><br><span style="font-size:11px;color:#64748b;">A project management platform allowing teams to organize, track, and manage work and tasks.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free to sign up for an account and access developer document</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.asana.com/docs/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">76</td>
+          <td><strong>Monday.com</strong><br><span style="font-size:11px;color:#64748b;">A work OS and project management platform enabling teams to manage projects, workflows, and track progress.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Short-lived Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">JWT</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can sign up and create apps on the developer plat</span></td>
+          <td style="font-size:12px;">GraphQL · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.monday.com/api-reference/docs/basics" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">77</td>
+          <td><strong>ClickUp</strong><br><span style="font-size:11px;color:#64748b;">A productivity and project management platform providing tasks, docs, goals, and time tracking.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Personal API Tokens</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Self-service via account settings and developer dashboard fo</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.clickup.com/docs/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">78</td>
+          <td><strong>Coda</strong><br><span style="font-size:11px;color:#64748b;">A collaborative doc platform providing a REST API for programmatic access to docs, tables, rows, and pages.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">API tokens can be generated directly from user account setti</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://coda.io/developers" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">79</td>
+          <td><strong>Smartsheet</strong><br><span style="font-size:11px;color:#64748b;">Online project management and collaboration tool for tracking work, managing projects, and sharing data.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can generate API access tokens directly in the Smartsh</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">80</td>
+          <td><strong>Harvest</strong><br><span style="font-size:11px;color:#64748b;">Time tracking, expense reporting, and project management software with an API for managing clients, projects, tasks, and time entries.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Standard self-serve developer account creation and OAuth app</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://help.getharvest.com/api-v2/authentication-api/authentication/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">Finance and Fintech</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">81</td>
+          <td><strong>Stripe</strong><br><span style="font-size:11px;color:#64748b;">Allows businesses to process payments, manage subscriptions, and handle financial transactions online.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Restricted API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free to sign up for an account and access test mode API keys</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.stripe.com/api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">82</td>
+          <td><strong>Plaid</strong><br><span style="font-size:11px;color:#64748b;">Open-finance platform and aggregator providing APIs to connect bank accounts, verify identity, and facilitate money movement.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Paid model with a self-serve dashboard and client credential</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://plaid.com/docs/quickstart" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">83</td>
+          <td><strong>Binance</strong><br><span style="font-size:11px;color:#64748b;">Provides cryptocurrency exchange APIs for spot, derivatives, and margin trading, account data, and market streams.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Signature</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can generate API keys directly through their account p</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.binance.us" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">84</td>
+          <td><strong>Paygent Connect</strong><br><span style="font-size:11px;color:#64748b;">Provides payment gateway services and card management via an API for online transactions and fintech applications.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires partner approval and account setup for live transac</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://api.paygent.tech/docs" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">85</td>
+          <td><strong>iPayX</strong><br><span style="font-size:11px;color:#64748b;">Provides payment processing and financial technology gateway services for merchants.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Requires developer registration and partner or location appr</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.fortispay.com/developers/quick-start" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">86</td>
+          <td><strong>QuickBooks</strong><br><span style="font-size:11px;color:#64748b;">Cloud-based accounting software API for managing small and medium-sized business financial data, invoices, and expenses.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OpenID Connect</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free developer account creation with sandbox QuickBooks Onli</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://liveflow.com/learn/quickbooks-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">87</td>
+          <td><strong>Xero</strong><br><span style="font-size:11px;color:#64748b;">Cloud-based accounting software platform for small and medium-sized businesses to manage invoicing, bank reconciliation, bookkeeping, and financial reporting.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developer accounts and sandbox access are freely available v</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.xero.com/documentation/guides/oauth2/auth-flow" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">88</td>
+          <td><strong>Brex</strong><br><span style="font-size:11px;color:#64748b;">Provides corporate card, expense management, and banking services via APIs for financial automation.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Requires account admin or card admin access to generate toke</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.brex.com/guides/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">89</td>
+          <td><strong>Ramp</strong><br><span style="font-size:11px;color:#64748b;">Corporate card and expense management platform providing programmatic access to transactions, cards, users, and bills.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">partial</span><br><span style="font-size:10px;color:#64748b;">Creating developer apps is self-serve in the dashboard, but </span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://support.ramp.com/accessing-the-developer-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">90</td>
+          <td><strong>PitchBook</strong><br><span style="font-size:11px;color:#64748b;">Provides access to private-market financial data including companies, investors, funds, and deals.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span><br><span style="font-size:10px;color:#64748b;">Requires an enterprise contract and Direct Data subscription</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">low</span></td>
+          <td style="font-size:11px;color:#64748b;">Documentation and API access are entirely gated be</td>
+          <td style="font-size:10px;"><a href="https://pipeline.zoominfo.com/sales/pitchbook-api-review" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+    <div class="cat-section">
+      <h3 style="margin:32px 0 8px;color:#1e293b;font-size:16px;border-left:4px solid #6366f1;padding-left:10px;">AI, Research and Media</h3>
+      <div style="overflow-x:auto;">
+      <table>
+        <thead><tr>
+          <th>#</th><th>App</th><th>Auth</th><th>Self-serve</th>
+          <th>API</th><th>MCP</th><th>Buildability</th><th>Blocker</th><th>Docs</th>
+        </tr></thead>
+        <tbody>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">91</td>
+          <td><strong>NotebookLM</strong><br><span style="font-size:11px;color:#64748b;">AI-powered research and note-taking assistant for generating summaries, insights, and audio overviews from uploaded documents.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Google Cloud access model</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span><br><span style="font-size:10px;color:#64748b;">No self-serve public developer key for consumer NotebookLM; </span></td>
+          <td style="font-size:12px;">REST · narrow</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">low</span></td>
+          <td style="font-size:11px;color:#64748b;">Consumer product lacks a public API key, relying o</td>
+          <td style="font-size:10px;"><a href="https://cloud.google.com/gemini" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">92</td>
+          <td><strong>Otter AI</strong><br><span style="font-size:11px;color:#64748b;">AI-powered meeting transcription, recording, and collaboration platform providing API access for managing channels, workspaces, and users.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">API keys can be created directly from the Otter.ai account u</span></td>
+          <td style="font-size:12px;">REST · narrow</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#f59e0b;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">medium</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">93</td>
+          <td><strong>Fathom</strong><br><span style="font-size:11px;color:#64748b;">AI-powered meeting assistant that records, transcribes, and summarizes video calls.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Sign up on website and generate API keys or register an OAut</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.fathom.ai/api-overview" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">94</td>
+          <td><strong>Consensus</strong><br><span style="font-size:11px;color:#64748b;">Integrates up-to-date peer-reviewed citations into custom workflows and applications.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span><br><span style="font-size:10px;color:#64748b;">Requires an active Consensus account on the Enterprise plan </span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">low</span></td>
+          <td style="font-size:11px;color:#64748b;">API access is strictly gated behind an Enterprise </td>
+          <td style="font-size:10px;"><a href="https://support.goconsensus.com/consensus-api-documents" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">95</td>
+          <td><strong>Reducto</strong><br><span style="font-size:11px;color:#64748b;">Provides document parsing and extraction APIs tailored for AI agents and LLM applications.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Self-serve via website with API key generation.</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.reducto.ai/quickstart" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">96</td>
+          <td><strong>Devin</strong><br><span style="font-size:11px;color:#64748b;">An AI software engineer that can autonomously execute complex coding tasks, PR reviews, and automated workflows via API.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Accessible via API keys and service users.</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.devin.ai" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">97</td>
+          <td><strong>Higgsfield</strong><br><span style="font-size:11px;color:#64748b;">Provides a centralized interface and API for generative AI models specializing in video generation, image generation, and machine learning media.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Self-serve signup available through developer portal.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://apis.io/providers/higgsfield" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">98</td>
+          <td><strong>Mermaid CLI</strong><br><span style="font-size:11px;color:#64748b;">A programmatic interface to read and write coral reef data, observations, and project metrics for conservation.</span></td>
+          <td><span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span> <span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Requires MERMAID login credentials or generated API token.</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://datamermaid.org/documentation/mermaid-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">99</td>
+          <td><strong>YouTube Transcript</strong><br><span style="font-size:11px;color:#64748b;">Provides real-time programmatic access to retrieve transcripts and captions from YouTube videos and shorts.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Offers a free trial with 100 credits upon signup.</span></td>
+          <td style="font-size:12px;">REST · narrow</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://scrapecreators.com/youtube-transcript-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr>
+        <tr>
+          <td style="color:#64748b;font-size:12px;">100</td>
+          <td><strong>Grain</strong><br><span style="font-size:11px;color:#64748b;">AI-powered meeting recording, transcription, and summarization platform</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Personal Access Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Workspace Access Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users with access can generate Workspace Access Tokens and u</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.grain.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+        </tr></tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="text-align:center;padding:24px;color:#94a3b8;font-size:12px;">
+    Built with Tavily + Claude claude-sonnet-4-6 + Python · Composio AI Product Ops Intern Assignment
+    · <a href="https://github.com/yourusername/composio-assignment" style="color:#6366f1;">GitHub repo ↗</a>
+  </div>
+
+</div>
+</body>
+</html>

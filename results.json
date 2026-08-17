@@ -1,0 +1,1903 @@
+[
+  {
+    "what_it_does": "Customer relationship management platform for managing sales, customer service, marketing, and operations.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free Developer Edition accounts are available immediately for development and testing.",
+    "api_type": "both",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_calls_login.htm",
+    "id": 1,
+    "name": "Salesforce",
+    "category": "CRM and Sales",
+    "website": "salesforce.com"
+  },
+  {
+    "what_it_does": "Sales-focused CRM software that helps teams track leads, manage deal pipelines, and automate sales workflows.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free developer sandbox accounts and standard product trials are available.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://pipedrive.readme.io/docs/core-api-concepts-authentication",
+    "id": 3,
+    "name": "Pipedrive",
+    "category": "CRM and Sales",
+    "website": "pipedrive.com"
+  },
+  {
+    "what_it_does": "Open-source CRM platform for managing sales pipelines, contacts, companies, and custom workflow objects.",
+    "auth_methods": [
+      "API Key",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free cloud tier and open-source self-hosting available; API keys can be generated immediately in workspace settings.",
+    "api_type": "both",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.twenty.com/developers/extend/api",
+    "id": 5,
+    "name": "Twenty",
+    "category": "CRM and Sales",
+    "website": "twenty.com"
+  },
+  {
+    "what_it_does": "Customizable work management and CRM platform for team collaboration and workflow automation.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free plan available; API keys can be created directly from account settings.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.podio.com/authentication",
+    "id": 6,
+    "name": "Podio",
+    "category": "CRM and Sales",
+    "website": "podio.com"
+  },
+  {
+    "what_it_does": "Cloud-based customer relationship management (CRM) platform for managing sales, marketing, and customer support operations.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free developer accounts and free trials are available with instant signup.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://www.zoho.com/crm/developer/docs/api/v8/auth-request.html",
+    "id": 7,
+    "name": "Zoho CRM",
+    "category": "CRM and Sales",
+    "website": "zoho.com/crm"
+  },
+  {
+    "what_it_does": "Close is a CRM and sales engagement platform for managing leads, contacts, opportunities, and sales communications.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free trial available with instant access to API keys and developer tools.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.close.com",
+    "id": 8,
+    "name": "Close",
+    "category": "CRM and Sales",
+    "website": "close.com"
+  },
+  {
+    "what_it_does": "CRM designed for Google Workspace to manage leads, contacts, opportunities, and sales pipelines.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers a free trial; API keys and OAuth credentials can be generated directly in the user settings.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.copper.com/introduction/oauth/index.html",
+    "id": 9,
+    "name": "Copper",
+    "category": "CRM and Sales",
+    "website": "copper.com"
+  },
+  {
+    "what_it_does": "DealCloud is a CRM, deal management, and business development platform tailored for private equity, M&A, and financial services.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "no",
+    "self_serve_notes": "Requires an enterprise subscription and client tenant credentials; no self-serve developer sign-up or free trial.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "medium",
+    "main_blocker": "Requires active enterprise client credentials and tenant access to test and build integrations.",
+    "docs_url": "https://api.docs.dealcloud.com",
+    "id": 10,
+    "name": "DealCloud",
+    "category": "CRM and Sales",
+    "website": "api.docs.dealcloud.com"
+  },
+  {
+    "what_it_does": "Customer support and helpdesk software for ticket management, live chat, and knowledge base administration.",
+    "auth_methods": [
+      "OAuth2",
+      "API Token",
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers a free developer account and standard free trials.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.zendesk.com/documentation/authentication/api-tokens-to-oauth",
+    "id": 11,
+    "name": "Zendesk",
+    "category": "Support and Helpdesk",
+    "website": "zendesk.com"
+  },
+  {
+    "what_it_does": "AI-powered customer service and help desk platform for customer support, messaging, and ticket management.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Self-serve developer signup and instant access token generation in the Developer Hub.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.intercom.com/docs/build-an-integration/learn-more/authentication",
+    "id": 12,
+    "name": "Intercom",
+    "category": "Support and Helpdesk",
+    "website": "intercom.com"
+  },
+  {
+    "what_it_does": "Customer support and helpdesk software for managing tickets, contacts, and agent workflows.",
+    "auth_methods": [
+      "API Key",
+      "Basic",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free trial available with instant online signup.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers-staging.freshworks.com/docs/app-sdk/v2.3/freshdesk/oauth",
+    "id": 13,
+    "name": "Freshdesk",
+    "category": "Support and Helpdesk",
+    "website": "freshdesk.com"
+  },
+  {
+    "what_it_does": "Customer service and communication platform combining shared inboxes, messaging channels, and workflow automation.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free trial available and developer accounts can be created self-serve via the developer portal.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://dev.frontapp.com/docs/authentication",
+    "id": 14,
+    "name": "Front",
+    "category": "Support and Helpdesk",
+    "website": "front.com"
+  },
+  {
+    "what_it_does": "B2B customer support and helpdesk platform for managing customer communications and tracking issues.",
+    "auth_methods": [
+      "API Key",
+      "Token",
+      "OAuth2"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires demo or paid plan setup, but API tokens can be generated by admins directly in settings.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.usepylon.com/pylon-docs/developer/api",
+    "id": 15,
+    "name": "Pylon",
+    "category": "Support and Helpdesk",
+    "website": "usepylon.com"
+  },
+  {
+    "what_it_does": "Helpdesk and live chat software for managing customer tickets, live chats, call center, and social media queries.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers a 14-day free trial with instant setup and no credit card required.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://support.liveagent.com/840770-Complete-API-reference",
+    "id": 16,
+    "name": "LiveAgent",
+    "category": "Support and Helpdesk",
+    "website": "liveagent.com"
+  },
+  {
+    "what_it_does": "API-first customer support platform built for developers and modern product teams.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Self-serve onboarding with immediate API key access.",
+    "api_type": "GraphQL",
+    "api_breadth": "broad",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://apis.io/providers/plain",
+    "id": 17,
+    "name": "Plain",
+    "category": "Support and Helpdesk",
+    "website": "plain.com"
+  },
+  {
+    "what_it_does": "Customer support and helpdesk platform for managing customer conversations, tickets, and knowledge bases.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key",
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers a free trial and immediate self-serve access to API keys and OAuth app creation.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.helpscout.com/mailbox-api/overview/authentication",
+    "id": 18,
+    "name": "Help Scout",
+    "category": "Support and Helpdesk",
+    "website": "helpscout.com"
+  },
+  {
+    "what_it_does": "Customer support and helpdesk platform designed for e-commerce businesses.",
+    "auth_methods": [
+      "OAuth2",
+      "Basic",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free trial available; API credentials can be accessed directly in the user settings.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.gorgias.com/en-US/articles/developer-resources-18370",
+    "id": 19,
+    "name": "Gorgias",
+    "category": "Support and Helpdesk",
+    "website": "gorgias.com"
+  },
+  {
+    "what_it_does": "All-in-one customer service platform providing personalized omnichannel support and helpdesk management.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "self_serve": "no",
+    "self_serve_notes": "Paid enterprise platform without a public free trial; requires an active Gladly instance and sales contact.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.gladly.com/rest",
+    "id": 20,
+    "name": "Gladly",
+    "category": "Support and Helpdesk",
+    "website": "gladly.com"
+  },
+  {
+    "what_it_does": "Channel-based team messaging and collaboration platform.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier available with instant access to developer dashboard and API creation.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.slack.dev/apis/web-api",
+    "id": 21,
+    "name": "Slack",
+    "category": "Communications and Messaging",
+    "website": "slack.com"
+  },
+  {
+    "what_it_does": "CRM platform offering tools for inbound marketing, sales, customer service, and content management.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free developer accounts available with instant creation of private app access tokens and OAuth credentials.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.hubspot.com/docs/apps/developer-platform/build-apps/authentication/overview",
+    "id": 2,
+    "name": "HubSpot",
+    "category": "CRM and Sales",
+    "website": "hubspot.com"
+  },
+  {
+    "what_it_does": "A flexible and customizable CRM platform that enables businesses to manage relationships, pipelines, and data models via a robust API.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key",
+      "Bearer Token",
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can sign up, create an app, generate API keys, and implement OAuth flows directly through the developer settings.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.attio.com/rest-api/guides/authentication",
+    "id": 4,
+    "name": "Attio",
+    "category": "CRM and Sales",
+    "website": "attio.com"
+  },
+  {
+    "what_it_does": "Cloud communications platform enabling developers to integrate messaging, voice, and verification services into applications.",
+    "auth_methods": [
+      "Basic",
+      "API Key",
+      "Auth Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers a free trial and self-service account creation.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://www.twilio.com/docs/usage/rest-api-best-practices",
+    "id": 22,
+    "name": "Twilio",
+    "category": "Communications and Messaging",
+    "website": "twilio.com"
+  },
+  {
+    "what_it_does": "A collaboration and team messaging platform providing real-time chat, audio/video calls, and extensible customization options.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Users can register client applications via Zoho Accounts to obtain OAuth credentials.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://www.zoho.com/cliq/help/restapi/v3/introduction",
+    "id": 23,
+    "name": "Zoho Cliq",
+    "category": "Communications and Messaging",
+    "website": "zoho.com/cliq"
+  },
+  {
+    "what_it_does": "An enterprise collaboration and communication suite providing messaging, docs, calendar, video conferencing, and workflow automation APIs.",
+    "auth_methods": [
+      "Token",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can sign up for a Lark developer account and create apps for free.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://open.larksuite.com/document/home/introduction-to-scope-and-authorization/access-credentials",
+    "id": 24,
+    "name": "Lark",
+    "category": "Communications and Messaging",
+    "website": "open.larksuite.com"
+  },
+  {
+    "what_it_does": "Pumble is a team communication and messaging platform offering real-time chat, video conferencing, and collaboration tools.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier available with paid plans for advanced features; self-service developer account creation.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://pumble.com",
+    "id": 25,
+    "name": "Pumble",
+    "category": "Communications and Messaging",
+    "website": "pumble.com"
+  },
+  {
+    "what_it_does": "A communications and messaging platform that allows users to interact via voice, video, and text, and enables developers to build bots and apps using its API.",
+    "auth_methods": [
+      "OAuth2",
+      "Bot Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can sign up and create applications freely on the Discord Developer Portal, though certain scopes and RPC features require partner approval.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.discord.com/developers/topics/oauth2",
+    "id": 26,
+    "name": "Discord",
+    "category": "Communications and Messaging",
+    "website": "discord.com"
+  },
+  {
+    "what_it_does": "A cloud-based instant messaging and voice-over-IP service offering bots, channels, and messaging APIs.",
+    "auth_methods": [
+      "API Key",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free access to Telegram Bot API via BotFather; MTProto API requires phone/account registration.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://core.telegram.org/api/auth",
+    "id": 27,
+    "name": "Telegram",
+    "category": "Communications and Messaging",
+    "website": "core.telegram.org"
+  },
+  {
+    "what_it_does": "Allows businesses to send and receive messages, manage WhatsApp accounts, and automate customer communications at scale using the WhatsApp Business Platform.",
+    "auth_methods": [
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free developer account required; requires Meta app setup and system user access tokens.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.facebook.com/docs/whatsapp",
+    "id": 28,
+    "name": "WhatsApp Business",
+    "category": "Communications and Messaging",
+    "website": "developers.facebook.com/docs/whatsapp"
+  },
+  {
+    "what_it_does": "A cloud-based phone system providing APIs for managing users, calls, numbers, contacts, tags, webhooks, and AI features.",
+    "auth_methods": [
+      "Basic",
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "API keys are self-serve, but OAuth marketplace app registration requires manual partner approval.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "Manual partner approval required for OAuth credentials.",
+    "docs_url": "https://developer.aircall.io/docs/basic-authentication",
+    "id": 29,
+    "name": "Aircall",
+    "category": "Communications and Messaging",
+    "website": "aircall.io"
+  },
+  {
+    "what_it_does": "Provides cloud communications APIs for SMS, voice, verification, and messaging.",
+    "auth_methods": [
+      "API Key",
+      "Basic",
+      "Token",
+      "OAuth2",
+      "JWT"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Sign up on dashboard with self-serve account and free credit/trial options available.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.vonage.com/en/verify/concepts/authentication",
+    "id": 30,
+    "name": "Vonage",
+    "category": "Communications and Messaging",
+    "website": "developer.vonage.com"
+  },
+  {
+    "what_it_does": "Allows developers to programmatically manage Google Ads campaigns, budgets, and reporting.",
+    "auth_methods": [
+      "OAuth2",
+      "Service Account"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires a Google Ads manager account and a developer token which may need approval.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "medium",
+    "main_blocker": "Requires developer token approval and specific Google Ads account permissions.",
+    "docs_url": "https://developers.google.com/google-ads/api/docs/get-started/make-first-call",
+    "id": 31,
+    "name": "Google Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "developers.google.com/google-ads"
+  },
+  {
+    "what_it_does": "Manage, create, and analyze Meta ad campaigns, accounts, and audiences programmatically.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Developer account creation is self-serve, but advanced access requires app review and business verification.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "medium",
+    "main_blocker": "App review and business verification required for production/advanced access.",
+    "docs_url": "https://developers.facebook.com/docs/marketing-apis",
+    "id": 32,
+    "name": "Meta Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "developers.facebook.com/docs/marketing-apis"
+  },
+  {
+    "what_it_does": "Allows developers to manage LinkedIn ad accounts, campaigns, users, and ad reporting programmatically.",
+    "auth_methods": [
+      "OAuth 2.0"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Available via the Self-Serve API Program upon registration for an API key on the Developer Site.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://learn.microsoft.com/linkedin/marketing",
+    "id": 33,
+    "name": "LinkedIn Ads",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "learn.microsoft.com/linkedin/marketing"
+  },
+  {
+    "what_it_does": "All-in-one sales and marketing platform providing CRM, messaging, workflows, calendars, and payments for agencies and businesses.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key",
+      "Private Integration Tokens",
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Available via plans (Starter, Unlimited, Agency Pro) with developer marketplace access.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://marketplace.gohighlevel.com/docs/oauth/ExternalAuthentication",
+    "id": 34,
+    "name": "GoHighLevel",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "highlevel.stoplight.io"
+  },
+  {
+    "what_it_does": "Mailchimp is an email marketing and automation platform that allows businesses to manage marketing campaigns, mailing lists, and customer data via its API.",
+    "auth_methods": [
+      "API Key",
+      "OAuth2",
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier and paid plans available with self-serve developer access.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://mailchimp.com/developer/marketing/docs/fundamentals",
+    "id": 35,
+    "name": "Mailchimp",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "mailchimp.com/developer"
+  },
+  {
+    "what_it_does": "Klaviyo is a marketing automation platform specializing in email and SMS marketing for e-commerce.",
+    "auth_methods": [
+      "OAuth",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can sign up for a free account and access developer documentation and API keys.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.klaviyo.com/en/docs/authenticate_",
+    "id": 36,
+    "name": "Klaviyo",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "developers.klaviyo.com"
+  },
+  {
+    "what_it_does": "All-in-one marketing platform for building sales funnels, sending emails, managing contacts, and running online courses.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Users can generate public API keys directly from their Systeme.io account settings.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.systeme.io",
+    "id": 37,
+    "name": "Systeme.io",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "systeme.io"
+  },
+  {
+    "id": 38,
+    "name": "Pinterest",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "developers.pinterest.com",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 32.342942692s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '32s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "developers.pinterest.com"
+  },
+  {
+    "id": 39,
+    "name": "Threads",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "developers.facebook.com/docs/threads",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 30.384295456s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "developers.facebook.com/docs/threads"
+  },
+  {
+    "id": 40,
+    "name": "SendGrid",
+    "category": "Marketing, Ads, Email and Social",
+    "website": "sendgrid.com",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 28.823143891s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "sendgrid.com"
+  },
+  {
+    "id": 41,
+    "name": "Shopify",
+    "category": "Ecommerce",
+    "website": "shopify.dev",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 27.027068151s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '27s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "shopify.dev"
+  },
+  {
+    "id": 42,
+    "name": "WooCommerce",
+    "category": "Ecommerce",
+    "website": "woocommerce.com/document/woocommerce-rest-api",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 24.34780535s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "woocommerce.com/document/woocommerce-rest-api"
+  },
+  {
+    "id": 43,
+    "name": "BigCommerce",
+    "category": "Ecommerce",
+    "website": "developer.bigcommerce.com",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 22.783348547s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.5-flash-lite', 'location': 'global'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '22s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "developer.bigcommerce.com"
+  },
+  {
+    "what_it_does": "Provides APIs to manage and build e-commerce experiences, storefronts, and customer data on the Salesforce Commerce Cloud platform.",
+    "auth_methods": [
+      "OAuth2",
+      "Account Manager OAuth 2.0 bearer token",
+      "private_key_jwt"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires Account Manager login and creating an API client, typically associated with Salesforce Commerce Cloud partner or customer accounts.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "medium",
+    "main_blocker": "Requires enterprise Salesforce Commerce Cloud credentials and Account Manager setup.",
+    "docs_url": "https://developer.salesforce.com/docs/commerce/commerce-api/guide/custom-api-authentication.html",
+    "id": 44,
+    "name": "Salesforce Commerce Cloud",
+    "category": "Ecommerce",
+    "website": "developer.salesforce.com/docs/commerce"
+  },
+  {
+    "what_it_does": "Open-source ecommerce platform providing robust APIs for managing products, orders, customers, and store configurations.",
+    "auth_methods": [
+      "OAuth",
+      "Token-based",
+      "Session-based"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can freely access documentation and build integrations via self-hosted or cloud Magento/Adobe Commerce instances.",
+    "api_type": "both",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.adobe.com/commerce",
+    "id": 45,
+    "name": "Magento",
+    "category": "Ecommerce",
+    "website": "developer.adobe.com/commerce"
+  },
+  {
+    "what_it_does": "Provides commerce APIs for Squarespace merchant sites to manage orders, inventory, transactions, and extensions.",
+    "auth_methods": [
+      "API Key",
+      "OAuth 2.0"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can generate API keys directly from site settings or start the OAuth client process for extensions.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.squarespace.com/commerce-apis/authentication-and-permissions",
+    "id": 46,
+    "name": "Squarespace",
+    "category": "Ecommerce",
+    "website": "developers.squarespace.com"
+  },
+  {
+    "what_it_does": "Ecwid is an e-commerce platform providing APIs to manage store data, products, customers, and orders.",
+    "auth_methods": [
+      "Token",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can create custom apps and get access tokens for stores without going through complex OAuth flows.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.ecwid.com/develop-apps/app-settings",
+    "id": 47,
+    "name": "Ecwid",
+    "category": "Ecommerce",
+    "website": "api-docs.ecwid.com"
+  },
+  {
+    "what_it_does": "Allows creators to sell products, memberships, and digital downloads directly to consumers.",
+    "auth_methods": [
+      "OAuth2",
+      "API access token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free to sign up, API access and OAuth application creation available directly through Gumroad account settings.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://rollout.com/integration-guides/gumroad/api-essentials",
+    "id": 48,
+    "name": "Gumroad",
+    "category": "Ecommerce",
+    "website": "gumroad.com/api"
+  },
+  {
+    "what_it_does": "Allows developers to programmatically access Amazon's store data, orders, inventory, and fulfillment services via APIs.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires registering as an SP-API developer and partner approval/roles.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "medium",
+    "main_blocker": "Requires developer registration and role approval from Amazon",
+    "docs_url": "https://developer-docs.amazon.com/sp-api",
+    "id": 49,
+    "name": "Amazon Selling Partner",
+    "category": "Ecommerce",
+    "website": "developer-docs.amazon.com/sp-api"
+  },
+  {
+    "what_it_does": "A platform for creators to monetize content, manage subscriptions, checkout sessions, and community access.",
+    "auth_methods": [
+      "API Key",
+      "Bearer Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Accessible via platform integration settings and third-party tools like Zapier.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "no",
+    "buildability": "medium",
+    "main_blocker": "Limited public standalone documentation; requires navigating third-party integration wrappers or admin endpoints.",
+    "docs_url": "https://www.mintlify.com/MatthewSabia1/AdRecon/api/fanbasis",
+    "id": 50,
+    "name": "Fanbasis",
+    "category": "Ecommerce",
+    "website": "fanbasis.com"
+  },
+  {
+    "what_it_does": "Provides real-time SEO data including keyword search volumes, Google SERPs, and backlink info through flexible APIs.",
+    "auth_methods": [
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Start for free with $1 credit to test, requires minimum $50 deposit to enable the Live environment.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.dataforseo.com",
+    "id": 51,
+    "name": "DataForSEO",
+    "category": "Data, SEO and Scraping",
+    "website": "docs.dataforseo.com"
+  },
+  {
+    "what_it_does": "Provides programmatic access to SE Ranking's SEO data, project management, rankings, audits, and backlinks for custom integrations.",
+    "auth_methods": [
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers pay-as-you-go plans starting at $50/250K credits and includes API access with standard subscriptions.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://seranking.com/api.html",
+    "id": 52,
+    "name": "SE Ranking",
+    "category": "Data, SEO and Scraping",
+    "website": "seranking.com/api"
+  },
+  {
+    "what_it_does": "Provides SEO and website data including keyword research, backlink analysis, and site auditing via API",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires application to join the Ahrefs Connect integration program and partner approval",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "medium",
+    "main_blocker": "Partner approval needed to join Ahrefs Connect and obtain API credentials",
+    "docs_url": "https://docs.ahrefs.com/en/ahrefs-connect/docs/introduction",
+    "id": 53,
+    "name": "Ahrefs",
+    "category": "Data, SEO and Scraping",
+    "website": "ahrefs.com/api"
+  },
+  {
+    "what_it_does": "Provides a powerful and flexible REST API to programmatically scrape web pages and retrieve structured data.",
+    "auth_methods": [
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "API token can be generated directly via the user dashboard.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.mrscraper.com/docs/api/overview",
+    "id": 54,
+    "name": "MrScraper",
+    "category": "Data, SEO and Scraping",
+    "website": "docs.mrscraper.com"
+  },
+  {
+    "what_it_does": "Provides programmatic access to the Apify platform for web scraping, data extraction, and running actors.",
+    "auth_methods": [
+      "Token",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Users can sign up and find their API token in the Apify Console under Settings > API & Integrations.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.apify.com/api/v2",
+    "id": 55,
+    "name": "Apify",
+    "category": "Data, SEO and Scraping",
+    "website": "docs.apify.com"
+  },
+  {
+    "what_it_does": "Turns websites into LLM-ready markdown and structured data using web scraping and crawling APIs.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier available without an API key for limited rate limits, with paid tiers available via self-serve.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.firecrawl.dev/introduction",
+    "id": 56,
+    "name": "Firecrawl",
+    "category": "Data, SEO and Scraping",
+    "website": "firecrawl.dev"
+  },
+  {
+    "what_it_does": "Provides web data collection infrastructure including proxies, web scraping APIs, and anti-bot bypass solutions.",
+    "auth_methods": [
+      "API Key",
+      "Token",
+      "Basic"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Paid usage-based pricing plans available through the platform control panel.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.brightdata.com/api-reference/authentication",
+    "id": 57,
+    "name": "Bright Data",
+    "category": "Data, SEO and Scraping",
+    "website": "brightdata.com"
+  },
+  {
+    "what_it_does": "Hunts down social media accounts by username across social networks.",
+    "auth_methods": [
+      "none"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Open-source command-line tool available on GitHub.",
+    "api_type": "none",
+    "api_breadth": "none",
+    "has_mcp": "no",
+    "buildability": "low",
+    "main_blocker": "Sherlock is a CLI tool and Python library without a native public REST API.",
+    "docs_url": "https://github.com/sherlock-project/sherlock",
+    "id": 58,
+    "name": "Sherlock",
+    "category": "Data, SEO and Scraping",
+    "website": "github.com/sherlock-project/sherlock"
+  },
+  {
+    "id": 59,
+    "name": "Waterfall.io",
+    "category": "Data, SEO and Scraping",
+    "website": "waterfall.io",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 31.567797642s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '31s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "waterfall.io"
+  },
+  {
+    "id": 60,
+    "name": "Clay",
+    "category": "Data, SEO and Scraping",
+    "website": "clay.com",
+    "what_it_does": "Research failed",
+    "auth_methods": [
+      "unknown"
+    ],
+    "self_serve": "unknown",
+    "self_serve_notes": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 15, model: gemini-3.5-flash-lite\\nPlease retry in 28.093728416s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerMinutePerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-3.5-flash-lite'}, 'quotaValue': '15'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '28s'}]}}",
+    "api_type": "unknown",
+    "api_breadth": "unknown",
+    "has_mcp": "unknown",
+    "buildability": "unknown",
+    "main_blocker": "error",
+    "docs_url": "clay.com"
+  },
+  {
+    "what_it_does": "Platform for version control and collaboration allowing developers to host and review code, manage projects, and build software.",
+    "auth_methods": [
+      "Token",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier available with self-serve personal access tokens and GitHub Apps.",
+    "api_type": "both",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.github.com/rest",
+    "id": 61,
+    "name": "GitHub",
+    "category": "Developer, Infra and Data",
+    "website": "docs.github.com/rest"
+  },
+  {
+    "what_it_does": "Cloud platform for static sites and Serverless functions, enabling developers to host and deploy web applications.",
+    "auth_methods": [
+      "Token",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Available on all plans with self-serve account creation and access token generation.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://vercel.com/docs/rest-api",
+    "id": 62,
+    "name": "Vercel",
+    "category": "Developer, Infra and Data",
+    "website": "vercel.com/docs/rest-api"
+  },
+  {
+    "what_it_does": "Netlify is a hosting and serverless backend platform for web applications and static sites, providing deployment, form handling, and site management.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Self-serve via public developer accounts and standard OAuth 2 authentication.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.netlify.com/api-and-cli-guides/api-guides/get-started-with-api",
+    "id": 63,
+    "name": "Netlify",
+    "category": "Developer, Infra and Data",
+    "website": "docs.netlify.com/api"
+  },
+  {
+    "what_it_does": "Cloudflare provides web infrastructure, security, CDN, and Zero Trust access control services via API.",
+    "auth_methods": [
+      "Token",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers free tier and self-serve paid tiers with API access.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.cloudflare.com/fundamentals/api/get-started/create-token",
+    "id": 64,
+    "name": "Cloudflare",
+    "category": "Developer, Infra and Data",
+    "website": "developers.cloudflare.com/api"
+  },
+  {
+    "what_it_does": "Provides an open-source Firebase alternative with auto-generated APIs, authentication, and database management.",
+    "auth_methods": [
+      "API Key",
+      "Token",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier available with self-serve signup and paid usage plans.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://supabase.com/docs/guides/api",
+    "id": 65,
+    "name": "Supabase",
+    "category": "Developer, Infra and Data",
+    "website": "supabase.com/docs"
+  },
+  {
+    "what_it_does": "Enables execution of Cypher graph queries and authentication via HTTP requests for Neo4j graph databases.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Freemium with free trial and self-serve signup available.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://neo4j.com/docs/api",
+    "id": 66,
+    "name": "Neo4j",
+    "category": "Developer, Infra and Data",
+    "website": "neo4j.com/docs/api"
+  },
+  {
+    "what_it_does": "Cloud-based data warehousing and analytics platform providing data storage, processing, and analytical solutions.",
+    "auth_methods": [
+      "Token",
+      "OAuth"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers free trial and self-serve sign-up for cloud accounts.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.matillion.com/metl/docs/snowflake-pat-authentication",
+    "id": 67,
+    "name": "Snowflake",
+    "category": "Developer, Infra and Data",
+    "website": "docs.snowflake.com"
+  },
+  {
+    "what_it_does": "Manages MongoDB Atlas cloud database clusters, projects, and administrative resources via an API.",
+    "auth_methods": [
+      "API Key",
+      "OAuth 2.0 (Service Accounts)"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier and trial available with self-serve signup.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://www.mongodb.com/docs/atlas/api/api-authentication",
+    "id": 68,
+    "name": "MongoDB Atlas",
+    "category": "Developer, Infra and Data",
+    "website": "mongodb.com/docs/atlas/api"
+  },
+  {
+    "what_it_does": "Provides monitoring, security, and analytics for cloud-scale infrastructure and applications programmatically.",
+    "auth_methods": [
+      "API Key",
+      "Application Key",
+      "Personal Access Tokens",
+      "Service Access Tokens",
+      "OAuth"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Sign up for Datadog to access API keys and documentation immediately with free trial options.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.datadoghq.com/api/latest",
+    "id": 69,
+    "name": "Datadog",
+    "category": "Developer, Infra and Data",
+    "website": "docs.datadoghq.com/api"
+  },
+  {
+    "what_it_does": "Error tracking and performance monitoring platform that helps developers identify, triage, and reproduce crashes.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key",
+      "Bearer Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier and self-serve paid plans available with developer settings for creating integrations.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.sentry.io/api/auth",
+    "id": 70,
+    "name": "Sentry",
+    "category": "Developer, Infra and Data",
+    "website": "docs.sentry.io/api"
+  },
+  {
+    "what_it_does": "Notion is a productivity and project management platform for note-taking, document sharing, and database organization.",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer Token",
+      "Internal Integration Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can create self-serve integrations and personal access tokens directly via the developer portal.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.notion.com/guides/get-started/overview",
+    "id": 71,
+    "name": "Notion",
+    "category": "Productivity and Project Management",
+    "website": "developers.notion.com"
+  },
+  {
+    "what_it_does": "A cloud collaboration service combining database functionality with spreadsheet interfaces for project management and data organization.",
+    "auth_methods": [
+      "Personal Access Token (PAT)",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier available with self-serve signup and token creation.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://support.airtable.com/articles/9934989703-creating-personal-access-tokens",
+    "id": 72,
+    "name": "Airtable",
+    "category": "Productivity and Project Management",
+    "website": "airtable.com/developers"
+  },
+  {
+    "what_it_does": "An issue tracking and project management tool designed for high-performing software teams.",
+    "auth_methods": [
+      "OAuth2",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers self-serve plans ranging from Free to Enterprise with self-serve API access.",
+    "api_type": "GraphQL",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://linear.app/developers/graphql",
+    "id": 73,
+    "name": "Linear",
+    "category": "Productivity and Project Management",
+    "website": "developers.linear.app"
+  },
+  {
+    "what_it_does": "Issue tracking, project management, and agile software development tool by Atlassian.",
+    "auth_methods": [
+      "OAuth 2.0",
+      "Basic Auth",
+      "API Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free tier and free trial available for self-service sign-up.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.atlassian.com/software/jira/docs/api/REST/7.6.1",
+    "id": 74,
+    "name": "Jira",
+    "category": "Productivity and Project Management",
+    "website": "developer.atlassian.com"
+  },
+  {
+    "what_it_does": "A project management platform allowing teams to organize, track, and manage work and tasks.",
+    "auth_methods": [
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free to sign up for an account and access developer documentation and personal access tokens.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.asana.com/docs/authentication",
+    "id": 75,
+    "name": "Asana",
+    "category": "Productivity and Project Management",
+    "website": "developers.asana.com"
+  },
+  {
+    "what_it_does": "A work OS and project management platform enabling teams to manage projects, workflows, and track progress.",
+    "auth_methods": [
+      "OAuth",
+      "API Key",
+      "Short-lived Token",
+      "JWT"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developers can sign up and create apps on the developer platform with self-serve access.",
+    "api_type": "GraphQL",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.monday.com/api-reference/docs/basics",
+    "id": 76,
+    "name": "Monday.com",
+    "category": "Productivity and Project Management",
+    "website": "developer.monday.com"
+  },
+  {
+    "what_it_does": "A productivity and project management platform providing tasks, docs, goals, and time tracking.",
+    "auth_methods": [
+      "Personal API Tokens",
+      "OAuth 2.0"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Self-service via account settings and developer dashboard for tokens and OAuth apps.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.clickup.com/docs/authentication",
+    "id": 77,
+    "name": "ClickUp",
+    "category": "Productivity and Project Management",
+    "website": "clickup.com/api"
+  },
+  {
+    "what_it_does": "A collaborative doc platform providing a REST API for programmatic access to docs, tables, rows, and pages.",
+    "auth_methods": [
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "API tokens can be generated directly from user account settings.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://coda.io/developers",
+    "id": 78,
+    "name": "Coda",
+    "category": "Productivity and Project Management",
+    "website": "coda.io/developers"
+  },
+  {
+    "what_it_does": "Online project management and collaboration tool for tracking work, managing projects, and sharing data.",
+    "auth_methods": [
+      "API Key",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Users can generate API access tokens directly in the Smartsheet UI or implement OAuth2.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.smartsheet.com/api/smartsheet/guides/basics/authentication",
+    "id": 79,
+    "name": "Smartsheet",
+    "category": "Productivity and Project Management",
+    "website": "smartsheet.com/developers"
+  },
+  {
+    "what_it_does": "Time tracking, expense reporting, and project management software with an API for managing clients, projects, tasks, and time entries.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Standard self-serve developer account creation and OAuth app registration.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://help.getharvest.com/api-v2/authentication-api/authentication/authentication",
+    "id": 80,
+    "name": "Harvest",
+    "category": "Productivity and Project Management",
+    "website": "help.getharvest.com/api-v2"
+  },
+  {
+    "what_it_does": "Allows businesses to process payments, manage subscriptions, and handle financial transactions online.",
+    "auth_methods": [
+      "API Key",
+      "OAuth 2.0",
+      "Restricted API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free to sign up for an account and access test mode API keys immediately.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.stripe.com/api",
+    "id": 81,
+    "name": "Stripe",
+    "category": "Finance and Fintech",
+    "website": "stripe.com/docs/api"
+  },
+  {
+    "what_it_does": "Open-finance platform and aggregator providing APIs to connect bank accounts, verify identity, and facilitate money movement.",
+    "auth_methods": [
+      "Token",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Paid model with a self-serve dashboard and client credentials.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://plaid.com/docs/quickstart",
+    "id": 82,
+    "name": "Plaid",
+    "category": "Finance and Fintech",
+    "website": "plaid.com/docs"
+  },
+  {
+    "what_it_does": "Provides cryptocurrency exchange APIs for spot, derivatives, and margin trading, account data, and market streams.",
+    "auth_methods": [
+      "API Key",
+      "OAuth",
+      "Signature"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Users can generate API keys directly through their account profile.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.binance.us",
+    "id": 83,
+    "name": "Binance",
+    "category": "Finance and Fintech",
+    "website": "binance-docs.github.io"
+  },
+  {
+    "what_it_does": "Provides payment gateway services and card management via an API for online transactions and fintech applications.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires partner approval and account setup for live transactions.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://api.paygent.tech/docs",
+    "id": 84,
+    "name": "Paygent Connect",
+    "category": "Finance and Fintech",
+    "website": "paygent.com"
+  },
+  {
+    "what_it_does": "Provides payment processing and financial technology gateway services for merchants.",
+    "auth_methods": [
+      "API Key",
+      "OAuth2",
+      "Token"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Requires developer registration and partner or location approval.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "medium",
+    "main_blocker": "none",
+    "docs_url": "https://docs.fortispay.com/developers/quick-start",
+    "id": 85,
+    "name": "iPayX",
+    "category": "Finance and Fintech",
+    "website": "ipayx.ai/docs"
+  },
+  {
+    "what_it_does": "Cloud-based accounting software API for managing small and medium-sized business financial data, invoices, and expenses.",
+    "auth_methods": [
+      "OAuth 2.0",
+      "OpenID Connect"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Free developer account creation with sandbox QuickBooks Online company for testing.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://liveflow.com/learn/quickbooks-api",
+    "id": 86,
+    "name": "QuickBooks",
+    "category": "Finance and Fintech",
+    "website": "developer.intuit.com"
+  },
+  {
+    "what_it_does": "Cloud-based accounting software platform for small and medium-sized businesses to manage invoicing, bank reconciliation, bookkeeping, and financial reporting.",
+    "auth_methods": [
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Developer accounts and sandbox access are freely available via the Xero Developer Centre.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.xero.com/documentation/guides/oauth2/auth-flow",
+    "id": 87,
+    "name": "Xero",
+    "category": "Finance and Fintech",
+    "website": "developer.xero.com"
+  },
+  {
+    "what_it_does": "Provides corporate card, expense management, and banking services via APIs for financial automation.",
+    "auth_methods": [
+      "Token",
+      "API Key",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Requires account admin or card admin access to generate tokens or create apps directly via the Brex dashboard.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developer.brex.com/guides/authentication",
+    "id": 88,
+    "name": "Brex",
+    "category": "Finance and Fintech",
+    "website": "developer.brex.com"
+  },
+  {
+    "what_it_does": "Corporate card and expense management platform providing programmatic access to transactions, cards, users, and bills.",
+    "auth_methods": [
+      "OAuth 2.0"
+    ],
+    "self_serve": "partial",
+    "self_serve_notes": "Creating developer apps is self-serve in the dashboard, but sandbox access requires contacting an account manager.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://support.ramp.com/accessing-the-developer-api",
+    "id": 89,
+    "name": "Ramp",
+    "category": "Finance and Fintech",
+    "website": "docs.ramp.com"
+  },
+  {
+    "what_it_does": "Provides access to private-market financial data including companies, investors, funds, and deals.",
+    "auth_methods": [
+      "API Key",
+      "Token"
+    ],
+    "self_serve": "no",
+    "self_serve_notes": "Requires an enterprise contract and Direct Data subscription; not available via self-serve signup.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "low",
+    "main_blocker": "Documentation and API access are entirely gated behind an enterprise contract and account team provisioning.",
+    "docs_url": "https://pipeline.zoominfo.com/sales/pitchbook-api-review",
+    "id": 90,
+    "name": "PitchBook",
+    "category": "Finance and Fintech",
+    "website": "pitchbook.com"
+  },
+  {
+    "what_it_does": "AI-powered research and note-taking assistant for generating summaries, insights, and audio overviews from uploaded documents.",
+    "auth_methods": [
+      "OAuth2",
+      "Google Cloud access model"
+    ],
+    "self_serve": "no",
+    "self_serve_notes": "No self-serve public developer key for consumer NotebookLM; Gemini Notebook Enterprise APIs are in preview requiring enterprise access.",
+    "api_type": "REST",
+    "api_breadth": "narrow",
+    "has_mcp": "yes",
+    "buildability": "low",
+    "main_blocker": "Consumer product lacks a public API key, relying on enterprise preview access or unofficial reverse-engineered wrappers.",
+    "docs_url": "https://cloud.google.com/gemini",
+    "id": 91,
+    "name": "NotebookLM",
+    "category": "AI, Research and Media",
+    "website": "cloud.google.com/gemini"
+  },
+  {
+    "what_it_does": "AI-powered meeting transcription, recording, and collaboration platform providing API access for managing channels, workspaces, and users.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "API keys can be created directly from the Otter.ai account under Integrations and the Developer tab.",
+    "api_type": "REST",
+    "api_breadth": "narrow",
+    "has_mcp": "no",
+    "buildability": "medium",
+    "main_blocker": "none",
+    "docs_url": "https://help.otter.ai/hc/en-us/articles/36130822688279-Otter-ai-Public-API",
+    "id": 92,
+    "name": "Otter AI",
+    "category": "AI, Research and Media",
+    "website": "help.otter.ai"
+  },
+  {
+    "what_it_does": "AI-powered meeting assistant that records, transcribes, and summarizes video calls.",
+    "auth_methods": [
+      "API Key",
+      "OAuth2"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Sign up on website and generate API keys or register an OAuth app.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.fathom.ai/api-overview",
+    "id": 93,
+    "name": "Fathom",
+    "category": "AI, Research and Media",
+    "website": "fathom.video"
+  },
+  {
+    "what_it_does": "Integrates up-to-date peer-reviewed citations into custom workflows and applications.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "no",
+    "self_serve_notes": "Requires an active Consensus account on the Enterprise plan with custom-quoted pricing; no free tier or self-serve key provisioning.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "yes",
+    "buildability": "low",
+    "main_blocker": "API access is strictly gated behind an Enterprise plan with custom pricing and requires requesting access.",
+    "docs_url": "https://support.goconsensus.com/consensus-api-documents",
+    "id": 94,
+    "name": "Consensus",
+    "category": "AI, Research and Media",
+    "website": "consensus.app"
+  },
+  {
+    "what_it_does": "Provides document parsing and extraction APIs tailored for AI agents and LLM applications.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Self-serve via website with API key generation.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "yes",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.reducto.ai/quickstart",
+    "id": 95,
+    "name": "Reducto",
+    "category": "AI, Research and Media",
+    "website": "reducto.ai"
+  },
+  {
+    "what_it_does": "An AI software engineer that can autonomously execute complex coding tasks, PR reviews, and automated workflows via API.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Accessible via API keys and service users.",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://docs.devin.ai",
+    "id": 96,
+    "name": "Devin",
+    "category": "AI, Research and Media",
+    "website": "docs.devin.ai"
+  },
+  {
+    "what_it_does": "Provides a centralized interface and API for generative AI models specializing in video generation, image generation, and machine learning media.",
+    "auth_methods": [
+      "API Key",
+      "Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Self-serve signup available through developer portal.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://apis.io/providers/higgsfield",
+    "id": 97,
+    "name": "Higgsfield",
+    "category": "AI, Research and Media",
+    "website": "higgsfield.ai"
+  },
+  {
+    "what_it_does": "A programmatic interface to read and write coral reef data, observations, and project metrics for conservation.",
+    "auth_methods": [
+      "Token",
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Requires MERMAID login credentials or generated API token.",
+    "api_type": "REST",
+    "api_breadth": "broad",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://datamermaid.org/documentation/mermaid-api",
+    "id": 98,
+    "name": "Mermaid CLI",
+    "category": "AI, Research and Media",
+    "website": "github.com/mermaid-js/mermaid-cli"
+  },
+  {
+    "what_it_does": "Provides real-time programmatic access to retrieve transcripts and captions from YouTube videos and shorts.",
+    "auth_methods": [
+      "API Key"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Offers a free trial with 100 credits upon signup.",
+    "api_type": "REST",
+    "api_breadth": "narrow",
+    "has_mcp": "no",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://scrapecreators.com/youtube-transcript-api",
+    "id": 99,
+    "name": "YouTube Transcript",
+    "category": "AI, Research and Media",
+    "website": "transcriptapi.com"
+  },
+  {
+    "what_it_does": "AI-powered meeting recording, transcription, and summarization platform",
+    "auth_methods": [
+      "OAuth2",
+      "Bearer Token",
+      "Personal Access Token",
+      "Workspace Access Token"
+    ],
+    "self_serve": "yes",
+    "self_serve_notes": "Users with access can generate Workspace Access Tokens and use OAuth2 flows directly",
+    "api_type": "REST",
+    "api_breadth": "moderate",
+    "has_mcp": "unknown",
+    "buildability": "high",
+    "main_blocker": "none",
+    "docs_url": "https://developers.grain.com",
+    "id": 100,
+    "name": "Grain",
+    "category": "AI, Research and Media",
+    "website": "grain.com"
+  }
+]
