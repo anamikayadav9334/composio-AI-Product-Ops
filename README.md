@@ -1,4 +1,4 @@
-# Composio — 100 App API Research Agent
+# 100 App API Research Agent
 
 AI Product Ops Intern take-home assignment. Researches API/auth/access details for 100 apps across 10 categories, then generates a single self-explanatory HTML report.
 
