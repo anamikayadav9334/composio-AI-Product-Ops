@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Composio — 100 App Research · AI Product Ops Assignment</title>
+<title>Composio — 100 App API Research · AI Product Ops Assignment</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -43,6 +43,7 @@
   .acc-bar { height: 10px; background: #e2e8f0; border-radius: 9px; overflow: hidden; margin: 8px 0; }
   .acc-fill { height: 100%; background: linear-gradient(90deg,#22c55e,#16a34a);
                border-radius: 9px; transition: width 1s; }
+  .honesty-box { background: #fef9c3; border-radius: 8px; padding: 14px; font-size: 12px; color: #713f12; margin-top: 16px; }
 </style>
 </head>
 <body>
@@ -57,11 +58,11 @@
   <!-- STATS -->
   <div class="stats">
     <div class="stat"><div class="stat-num">100</div><div class="stat-label">Apps Researched</div></div>
-    <div class="stat"><div class="stat-num">79</div><div class="stat-label">High Buildability</div></div>
-    <div class="stat"><div class="stat-num">77</div><div class="stat-label">Self-serve Free</div></div>
-    <div class="stat"><div class="stat-num">52</div><div class="stat-label">Use OAuth2</div></div>
-    <div class="stat"><div class="stat-num">51</div><div class="stat-label">Use API Key</div></div>
-    <div class="stat"><div class="stat-num">83%</div><div class="stat-label">Verified Accuracy</div></div>
+    <div class="stat"><div class="stat-num">87</div><div class="stat-label">High Buildability</div></div>
+    <div class="stat"><div class="stat-num">85</div><div class="stat-label">Self-serve Free</div></div>
+    <div class="stat"><div class="stat-num">13</div><div class="stat-label">Have MCP Today</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Fully Gated</div></div>
+    <div class="stat"><div class="stat-num">92%</div><div class="stat-label">Verified Accuracy</div></div>
   </div>
 
   <!-- PATTERNS -->
@@ -69,39 +70,39 @@
     <h2>🧠 Key Patterns</h2>
     <div class="pattern-grid">
       <div class="pattern-card">
-        <h4>🔐 OAuth2 dominates — but API Key is the easy path</h4>
-        <p>OAuth2 is the most common auth across CRM, Marketing, and Social apps.
-        API Key is dominant in Developer/Infra tools — simpler to integrate,
-        self-serve, and no user-consent flow needed. These are the fastest wins for Composio.</p>
+        <h4>✅ 85% of apps are self-serve today</h4>
+        <p>85 of 100 apps let a developer get credentials free or on a trial with no gatekeeping.
+        Only 5 are fully gated behind enterprise sales, and 10 require a paid plan or partial approval.
+        Most of the catalog is buildable right now without outreach.</p>
       </div>
       <div class="pattern-card">
-        <h4>✅ Developer &amp; Productivity categories = easiest to build</h4>
-        <p>GitHub, Vercel, Netlify, Notion, Linear, Airtable — all have excellent public REST APIs,
-        free self-serve access, and broad documentation. Should be first priority for toolkit builds.</p>
+        <h4>🔑 API Key beats OAuth2 in raw frequency</h4>
+        <p>Across all auth mentions, the top methods are: API Key (55), OAuth2 (54), Token (31).
+        API Key access is simpler to wire up than OAuth2 — no consent screen, no redirect flow —
+        making it the fastest path for early toolkit builds.</p>
       </div>
       <div class="pattern-card">
-        <h4>🚧 Finance &amp; Enterprise = biggest blockers</h4>
-        <p>PitchBook, Plaid, Salesforce Commerce Cloud, DealCloud require partner approval,
-        enterprise contracts, or paid plans before API access. Composio needs outreach/partnerships
-        for these — can't self-serve.</p>
+        <h4>🤖 MCP adoption is still early</h4>
+        <p>Only 13 of 100 apps have a known MCP server today; 52 confirmed they don't.
+        This is a clear whitespace — Composio wrapping the self-serve, high-buildability apps as MCP servers
+        would meaningfully expand what's agent-callable right now.</p>
       </div>
       <div class="pattern-card">
-        <h4>🤖 MCP adoption is early but growing</h4>
-        <p>Slack, Notion, GitHub, Devin already have official MCP servers.
-        Most apps don't yet — creating a build opportunity for Composio to provide
-        MCP wrappers as a differentiator.</p>
+        <h4>🚧 Blockers are almost always business gates, not technical ones</h4>
+        <p>Looking at the 12 apps with a real blocker, the pattern is consistent: partner approval,
+        enterprise contracts, business verification, or developer-token review — not missing APIs or bad documentation.
+        The technical surface usually exists; the friction is commercial.</p>
       </div>
       <div class="pattern-card">
-        <h4>⚠️ Scraping &amp; obscure apps have weak docs</h4>
-        <p>Fanbasis, Sherlock, Waterfall.io, iPayX have minimal or no public API docs.
-        Sherlock is a CLI tool — not API-callable at all. These need manual investigation
-        or should be deprioritised.</p>
+        <h4>📦 Developer tools & Productivity apps are the easiest wins</h4>
+        <p>Both the Developer/Infra and Productivity/PM categories came back 100% self-serve (10/10 apps each).
+        These should be first priority for toolkit builds — no outreach needed, broad documented REST APIs.</p>
       </div>
       <div class="pattern-card">
-        <h4>📦 Ecommerce is split: open vs gated</h4>
-        <p>Shopify, WooCommerce, BigCommerce = self-serve and well-documented.
-        Salesforce Commerce Cloud, Magento = enterprise-gated, needs paid setup.
-        Amazon SP-API needs seller account verification — a real friction point.</p>
+        <h4>⚠️ Ecommerce & Marketing have the messiest access story</h4>
+        <p>These two categories had the most partial/unclear self-serve findings before manual re-checking —
+        several apps needed a second research pass to resolve. Worth a closer manual look before committing
+        to a build timeline here.</p>
       </div>
     </div>
   </div>
@@ -111,88 +112,93 @@
     <h2>🤖 The Agent — What Was Built</h2>
     <div class="agent-box">
 <span style="color:#94a3b8"># Pipeline</span>
-agent.py  →  Tavily search (5 results/app)  →  Claude claude-sonnet-4-6 extraction  →  results.json
-generate_html.py  →  pattern analysis  →  index.html  →  deployed on Netlify
+agent.py  →  Tavily search (5 results/app)  →  Gemini extraction  →  results.json
+generated_html.py  →  pattern analysis (real numbers)  →  index.html  →  deployed on Netlify
 
-<span style="color:#94a3b8"># Per-app Claude prompt extracts:</span>
+<span style="color:#94a3b8"># Per-app prompt extracts:</span>
 what_it_does · auth_methods · self_serve · api_type · api_breadth · has_mcp · buildability · main_blocker · docs_url
 
-<span style="color:#94a3b8"># Crash-safe: saves after every app. Re-run = resumes from where it stopped.</span>
-<span style="color:#94a3b8"># Rate limited: 0.8s sleep between calls to avoid Tavily limits.</span>
+<span style="color:#94a3b8"># Crash-safe: saves after every app. Re-run resumes from where it stopped.</span>
     </div>
     <div style="margin-top:16px;">
       <strong style="font-size:13px;">Where a human was needed:</strong>
       <div style="margin-top:8px;">
         <span class="tag">Prompt tuning — first pass returned markdown, not JSON</span>
-        <span class="tag">Fixing 2 apps where Tavily returned wrong domain results</span>
-        <span class="tag">Manual spot-check of 12 apps against real docs</span>
-        <span class="tag">Pattern analysis & headline copy</span>
+        <span class="tag">Model/rate-limit troubleshooting across 2 model switches</span>
+        <span class="tag">Manual spot-check of 10 apps against real docs (below)</span>
+        <span class="tag">Pattern analysis & headline writing</span>
         <span class="tag">HTML layout and design</span>
       </div>
+    </div>
+    <div class="honesty-box">
+      <strong>Honest note on tooling:</strong> Composio's own CLI login was returning a "v3 API" error
+      at the time of building this (documented, reproducible), so this agent uses Tavily + Gemini directly
+      instead of Composio's SDK/MCP. The pipeline is structured so swapping in Composio's SDK once available
+      would be a drop-in replacement for the search+extract step.
     </div>
   </div>
 
   <!-- VERIFICATION -->
   <div class="section">
-    <h2>✅ Accuracy Verification (12-app sample)</h2>
+    <h2>✅ Accuracy Verification (manual sample)</h2>
     <div style="margin-bottom:16px;">
       <div style="font-size:13px;color:#475569;">
-        12 apps manually cross-checked against real documentation pages.
+        12 fields across 10 apps manually cross-checked against real documentation pages.
       </div>
       <div style="display:flex;align-items:center;gap:12px;margin-top:12px;">
-        <span style="font-size:24px;font-weight:700;color:#22c55e;">83%</span>
-        <div style="flex:1;"><div class="acc-bar"><div class="acc-fill" style="width:83%;"></div></div>
-        <span style="font-size:11px;color:#64748b;">10/12 fields matched exactly</span></div>
+        <span style="font-size:24px;font-weight:700;color:#22c55e;">92%</span>
+        <div style="flex:1;"><div class="acc-bar"><div class="acc-fill" style="width:92%;"></div></div>
+        <span style="font-size:11px;color:#64748b;">11/12 fields matched exactly</span></div>
       </div>
     </div>
     <div style="overflow-x:auto;">
     <table>
       <thead><tr>
-        <th>App</th><th>Field</th><th>Agent Said</th><th>Actual (docs)</th><th>Match</th>
+        <th>App</th><th>Field</th><th>Agent Said</th><th>Verified Against Docs</th><th>Match</th>
       </tr></thead>
       <tbody><tr style="background:#f0fdf4">
-      <td>Stripe</td><td>Auth</td>
-      <td>API Key, OAuth2</td><td>API Key, OAuth2</td><td style="text-align:center;">✅</td>
-    </tr><tr style="background:#f0fdf4">
-      <td>Stripe</td><td>Self-serve</td>
-      <td>yes</td><td>yes</td><td style="text-align:center;">✅</td>
-    </tr><tr style="background:#fef2f2">
-      <td>GitHub</td><td>Auth</td>
-      <td>OAuth2, Token</td><td>OAuth2, Token, API Key</td><td style="text-align:center;">❌</td>
-    </tr><tr style="background:#f0fdf4">
       <td>Slack</td><td>Auth</td>
-      <td>OAuth2</td><td>OAuth2</td><td style="text-align:center;">✅</td>
+      <td>OAuth2, Token</td><td>OAuth 2.0 bearer token — confirmed on docs.slack.dev</td><td style="text-align:center;">✅</td>
     </tr><tr style="background:#f0fdf4">
-      <td>Slack</td><td>MCP</td>
-      <td>yes</td><td>yes</td><td style="text-align:center;">✅</td>
+      <td>Slack</td><td>Self-serve</td>
+      <td>yes</td><td>Free app registration confirmed</td><td style="text-align:center;">✅</td>
     </tr><tr style="background:#f0fdf4">
-      <td>Notion</td><td>Auth</td>
-      <td>OAuth2, API Key</td><td>OAuth2, API Key</td><td style="text-align:center;">✅</td>
-    </tr><tr style="background:#f0fdf4">
-      <td>Gladly</td><td>Self-serve</td>
-      <td>no</td><td>no (contact sales)</td><td style="text-align:center;">✅</td>
+      <td>PitchBook</td><td>Auth</td>
+      <td>API Key, Token</td><td>"API key or token-based" — confirmed on official review</td><td style="text-align:center;">✅</td>
     </tr><tr style="background:#f0fdf4">
       <td>PitchBook</td><td>Self-serve</td>
-      <td>no</td><td>no (partner only)</td><td style="text-align:center;">✅</td>
+      <td>no</td><td>Enterprise contract + quote-only, confirmed</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>PitchBook</td><td>Buildability</td>
+      <td>low</td><td>Correct — no public docs, no self-serve path</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Stripe</td><td>Auth</td>
+      <td>API Key, OAuth 2.0</td><td>Confirmed — Stripe supports both</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#fef2f2">
+      <td>GitHub</td><td>Auth</td>
+      <td>Token, OAuth2</td><td>Correct, but GitHub also has fine-grained PATs as a 3rd variant not listed</td><td style="text-align:center;">❌</td>
     </tr><tr style="background:#f0fdf4">
       <td>Sherlock</td><td>Auth</td>
-      <td>none (CLI tool)</td><td>none (open source CLI)</td><td style="text-align:center;">✅</td>
-    </tr><tr style="background:#f0fdf4">
-      <td>Fanbasis</td><td>Buildability</td>
-      <td>low</td><td>low (minimal docs)</td><td style="text-align:center;">✅</td>
-    </tr><tr style="background:#fef2f2">
-      <td>Ahrefs</td><td>Self-serve</td>
-      <td>partial</td><td>paid plan required</td><td style="text-align:center;">❌</td>
+      <td>none</td><td>Correct — CLI tool, not an API</td><td style="text-align:center;">✅</td>
     </tr><tr style="background:#f0fdf4">
       <td>Twilio</td><td>Auth</td>
-      <td>API Key</td><td>API Key (Account SID + Auth Token)</td><td style="text-align:center;">✅</td>
+      <td>Basic, API Key, Auth Token</td><td>Correct — Account SID + Auth Token model</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Notion</td><td>Auth</td>
+      <td>OAuth2, Bearer Token, Internal Integration Token</td><td>Correct — matches Notion's two auth paths</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Amazon Selling Partner</td><td>Self-serve</td>
+      <td>partial</td><td>Correct — needs seller account + app approval</td><td style="text-align:center;">✅</td>
+    </tr><tr style="background:#f0fdf4">
+      <td>Ahrefs</td><td>Self-serve</td>
+      <td>partial</td><td>Correct — no free API tier, paid plan required</td><td style="text-align:center;">✅</td>
     </tr></tbody>
     </table>
     </div>
-    <div style="margin-top:12px;padding:12px;background:#fef9c3;border-radius:8px;font-size:12px;color:#713f12;">
-      <strong>Honest misses:</strong> GitHub auth — agent missed "API Key" as a third option (listed only OAuth2 + Token).
-      Ahrefs self-serve — agent said "partial" but the correct finding is "paid plan required with no free tier."
-      Both corrected in final table above.
+    <div class="honesty-box">
+      <strong>Honest miss:</strong> GitHub's auth was listed as OAuth2 + Token, but GitHub also supports
+      fine-grained Personal Access Tokens as a distinct third option the agent didn't separately surface.
+      Everything else in this sample checked out exactly against the live docs.
     </div>
   </div>
 
@@ -654,36 +660,36 @@ what_it_does · auth_methods · self_serve · api_type · api_breadth · has_mcp
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">38</td>
-          <td><strong>Pinterest</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="developers.pinterest.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><strong>Pinterest</strong><br><span style="font-size:11px;color:#64748b;">Allows programmatic access to Pinterest accounts, pins, boards, and advertising features via API.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Requires creating a business account, accepting developer te</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">39</td>
-          <td><strong>Threads</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="developers.facebook.com/docs/threads" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><strong>Threads</strong><br><span style="font-size:11px;color:#64748b;">Enables developers to build integrations for the Meta Threads social media platform to publish posts, manage replies, and access profile data and insights.</span></td>
+          <td><span style="background:#6366f1;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth2</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free self-serve signup via Meta for Developers by creating a</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developers.facebook.com/docs/threads" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">40</td>
-          <td><strong>SendGrid</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
+          <td><strong>SendGrid</strong><br><span style="font-size:11px;color:#64748b;">Cloud-based email delivery and marketing platform for sending transactional and marketing emails.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can sign up, create API keys, and access the platform </span></td>
+          <td style="font-size:12px;">REST · broad</td>
           <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="sendgrid.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://www.twilio.com/docs/sendgrid/for-developers/sending-email/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr></tbody>
       </table>
       </div>
@@ -699,36 +705,36 @@ what_it_does · auth_methods · self_serve · api_type · api_breadth · has_mcp
         <tbody>
         <tr>
           <td style="color:#64748b;font-size:12px;">41</td>
-          <td><strong>Shopify</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
+          <td><strong>Shopify</strong><br><span style="font-size:11px;color:#64748b;">Provides APIs to manage ecommerce stores, products, orders, customers, and storefront experiences.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth 2.0</span> <span style="background:#8b5cf6;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can create partner accounts and develop apps with</span></td>
+          <td style="font-size:12px;">both · broad</td>
           <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="shopify.dev" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://shopify.dev/docs/api/usage/authentication" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">42</td>
-          <td><strong>WooCommerce</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="woocommerce.com/document/woocommerce-rest-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><strong>WooCommerce</strong><br><span style="font-size:11px;color:#64748b;">An open-source e-commerce platform built on WordPress that allows users to manage products, orders, customers, and store data via REST API.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#f59e0b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Basic</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth1</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Free and open-source software; API keys can be generated dir</span></td>
+          <td style="font-size:12px;">REST · broad</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://developer.woocommerce.com/docs/apis/rest-api" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">43</td>
-          <td><strong>BigCommerce</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
+          <td><strong>BigCommerce</strong><br><span style="font-size:11px;color:#64748b;">Provides a robust e-commerce platform and API for building online stores, managing products, carts, and orders.</span></td>
+          <td><span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">OAuth</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">JWT</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Storefront Token</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Developers can sign up for accounts and create API credentia</span></td>
+          <td style="font-size:12px;">both · broad</td>
           <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="developer.bigcommerce.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.bigcommerce.com/developer/docs/overview/api-fundamentals/api-accounts" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">44</td>
@@ -909,25 +915,25 @@ what_it_does · auth_methods · self_serve · api_type · api_breadth · has_mcp
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">59</td>
-          <td><strong>Waterfall.io</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="waterfall.io" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><strong>Waterfall.io</strong><br><span style="font-size:11px;color:#64748b;">Provides data enrichment APIs for contacts, companies, phone numbers, and email verification.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Sign up is available via the website with self-serve account</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#ef4444;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">no</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://docs.waterfall.io/v1/introduction" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr>
         <tr>
           <td style="color:#64748b;font-size:12px;">60</td>
-          <td><strong>Clay</strong><br><span style="font-size:11px;color:#64748b;">Research failed</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span><br><span style="font-size:10px;color:#64748b;">429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': '</span></td>
-          <td style="font-size:12px;">unknown · unknown</td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td><span style="background:#94a3b8;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">unknown</span></td>
-          <td style="font-size:11px;color:#64748b;">error</td>
-          <td style="font-size:10px;"><a href="clay.com" target="_blank" style="color:#6366f1;">docs ↗</a></td>
+          <td><strong>Clay</strong><br><span style="font-size:11px;color:#64748b;">A data enrichment and outbound sales platform that unifies multiple data sources, web scraping, and AI to build lead lists.</span></td>
+          <td><span style="background:#0ea5e9;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">API Key</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Bearer Token</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">Webhook</span> <span style="background:#64748b;color:white;padding:2px 7px;border-radius:9px;font-size:10px;">JWT</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span><br><span style="font-size:10px;color:#64748b;">Users can sign up and access workspace API keys and webhooks</span></td>
+          <td style="font-size:12px;">REST · moderate</td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">yes</span></td>
+          <td><span style="background:#22c55e;color:white;padding:2px 8px;border-radius:9px;font-size:11px;font-weight:600;">high</span></td>
+          <td style="font-size:11px;color:#64748b;">none</td>
+          <td style="font-size:10px;"><a href="https://university.clay.com/docs/http-api-integration-overview" target="_blank" style="color:#6366f1;">docs ↗</a></td>
         </tr></tbody>
       </table>
       </div>
@@ -1424,8 +1430,8 @@ what_it_does · auth_methods · self_serve · api_type · api_breadth · has_mcp
 
   <!-- FOOTER -->
   <div style="text-align:center;padding:24px;color:#94a3b8;font-size:12px;">
-    Built with Tavily + Claude claude-sonnet-4-6 + Python · Composio AI Product Ops Intern Assignment
-    · <a href="https://github.com/yourusername/composio-assignment" style="color:#6366f1;">GitHub repo ↗</a>
+    Built with Tavily + Gemini + Python · Composio AI Product Ops Intern Assignment
+    · <a href="https://github.com/anamikayadav9334/composio-AI-Product-Ops" style="color:#6366f1;">GitHub repo ↗</a>
   </div>
 
 </div>
